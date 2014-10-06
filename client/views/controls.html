@@ -1,96 +1,66 @@
 <template name="__home">
 </template>
 
-<template name="cmsinn_layout">
-    <div id="cmsinn-container" class="container">
-        <div class="row clearfix">
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="translations">Enable Translations Awesomness</button>
-            </div>
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="structure">Enable Structure Awesomness</button>
-            </div>
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="navigation">Enable Navigation Awesomness</button>
-            </div>
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="image">Enable Image Awesomness</button>
-            </div>
-        </div>
-        <br/>
-        <div class="row clearfix">
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="locale">Enable Language Awesomness</button>
-            </div>
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="sortable">Enable Sortable Awesomness</button>
-            </div>
-            <div class="col-md-3 column">
-                 <button type="button" class="btn btn-default btn-block" id="deletable">Enable Deleteable Awesomness</button>
-            </div>
-        </div>
-        <br/>
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                 <button type="button" class="btn btn-default btn-block" id="disable">Disable Awesomness</button>
-            </div>
-        </div>
-    </div>
-</template>
-
-<template name="cmsinn_controls_left">
+<template name="cmsinn_controls">
     <div class="drager">
         <div id="cmsinn-container" class="container">
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_translations" title="Translations edit mode"><i class="fa fa-edit fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_structure" title="Structure edit mode"><i class="fa fa-puzzle-piece fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_navigation" title="Navigation edit mode"><i class="fa fa-link fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_image" title="Image edit mode"><i class="fa fa-image fa-2x"></i></button>
-                </div>
-            </div>    
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_locale" title="Languages edit mode"><i class="fa fa-globe fa-2x"></i></button>
-                </div>
-            </div>   
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_sortable"><i class="fa fa-reorder fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_deletable"><i class="fa fa-trash-o fa-2x"></i></button>
-                </div>
-            </div>
+
             <div class="row clearfix">    
                 <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_versioning"><i class="fa fa-paper-plane-o fa-2x"></i></button>
+                     <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="disable"><i class="fa fa-power-off fa-2x"></i></button>
                 </div>
             </div>
+            <!-- editor role -->
             <div class="row clearfix">    
+                <div class="col-md-1 column control">
+                     <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="versioning"><i class="fa fa-paper-plane-o fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-1 column control">
+                     <button type="button" class="btn btn-default btn-block js-plugin" title="Translations edit mode" data-plugin="label"><i class="fa fa-edit fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-1 column control">
+                     <button type="button" class="btn btn-default btn-block js-plugin" title="Image edit mode" data-plugin="image"><i class="fa fa-image fa-2x"></i></button>
+                </div>
+            </div>
+
+            <!-- admin role -->
+            {{#if isInRole 'admin'}}
+                <div class="row clearfix">
+                    <div class="col-md-1 column control">
+                         <button type="button" class="btn btn-default btn-block js-plugin" title="Record edit mode" data-plugin="record"><i class="fa fa-puzzle-piece fa-2x"></i></button>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-1 column control">
+                         <button type="button" class="btn btn-default btn-block js-plugin" title="Navigation edit mode" data-plugin="navigation"><i class="fa fa-link fa-2x"></i></button>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-1 column control">
+                         <button type="button" class="btn btn-default btn-block js-plugin" title="Locale edit mode" data-plugin="locale"><i class="fa fa-globe fa-2x"></i></button>
+                    </div>
+                </div>   
+                <div class="row clearfix">
+                    <div class="col-md-1 column control">
+                         <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="sortable"><i class="fa fa-reorder fa-2x"></i></button>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-md-1 column control">
+                         <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="deletable"><i class="fa fa-trash-o fa-2x"></i></button>
+                    </div>
+                </div>
+            {{/if}}
+            <!-- <div class="row clearfix">    
                 <div class="col-md-1 column control">
                      <button type="button" class="btn btn-default btn-block" id="cmsinn_dashboard"><i class="fa fa-dashboard fa-2x"></i></button>
                 </div>
-            </div>
-            <div class="row clearfix">    
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block" id="cmsinn_disable"><i class="fa fa-power-off fa-2x"></i></button>
-                </div>
-            </div>
+            </div> -->
+            
         </div>
     </div>
 </template>

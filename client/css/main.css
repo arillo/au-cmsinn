@@ -1,11 +1,62 @@
+
+
+/* Editable forms
+======================================*/
+
+.editable-container {
+  margin-bottom: 5px;
+}
+
+/* Inline */
+.editable-input textarea,
+.editable-input input[type="text"] {
+  margin-bottom: 0;
+  min-width: 200px;
+}
+
+.editable-input textarea {
+  min-width: 280px;
+}
+
+.editable-buttons .btn{
+  background-image: none;
+}
+
+/* wysihtml5 */
+.dropdown-menu li a,
+.editable-wysihtml5 {
+  color:#222 !important;
+}
+
+.wysihtml5-sandbox {
+  border: 0 !important;
+  width: 100% !important;
+}
+
+/* pop over */
+.popover-content .btn,
+.popover-content select {
+  margin-bottom: 4px;
+}
+
+.popover-content .row .btn,
+.popover-content .btn:last-child,
+.popover-content select:last-child {
+  margin-bottom: 0;
+}
+
+.popover-content .btn:hover {
+  background-image: none;
+}
+
+
+
+/* Control Bar
+======================================*/
 .drager {
   position: absolute;
   z-index:99999;
   width: auto;
-}
-
-.editable-wysihtml5 {
-  color:#000000;
 }
 
 #cmsinn-container {
@@ -15,14 +66,23 @@
   /*z-index:99999;*/
   opacity: .7;
   -webkit-transition: -webkit-transform .2s ease-in-out;
+  -moz-transition: -moz-transform .2s ease-in-out;
+  -o-transition: -o-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
 }
 
 #cmsinn-container:hover {
   cursor: move;
 }
 
-#cmsinn-container > .row:hover {
-  -webkit-transform: scale(1.1) ;
+#cmsinn-container > .row button i {
+  font-size: 1.7em;
+  width: 1.28571429em;
+  text-align: center;
+}
+
+#cmsinn-container > .row button:hover {
+  background-image: none;
 }
 
 #cmsinn-container > .row {
@@ -31,12 +91,16 @@
 
 .scale-down {
   -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
 }
 
 .rotate-90 {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .rotate90 {
@@ -44,6 +108,7 @@
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .control {
@@ -57,6 +122,7 @@
   left:50%;
   top:50%;
   opacity: 0.8;
+  width: 256px !important;
 }
 
 .empty-record{
@@ -67,10 +133,9 @@
 }
 
 .au-mark {
-  border: 1px dashed #4195fc;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  border-radius: 1px;
+  /*background: rgba(0,0,0,.7);*/
+  outline: 1px dashed #FF0000 !important;
+  /*padding: 0 10px 0 10px;*/
 }
 
 .image-mark{
@@ -115,4 +180,18 @@
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
+}
+
+.btn-block.current{
+  background: #000;
+  color:#CCC
+}
+
+.btn {
+  width: auto;
+}
+
+.editable-click, a.editable-click, a.editable-click:hover {
+  outline: 1px dashed #08C;
+  border: 0;
 }

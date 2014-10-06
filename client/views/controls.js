@@ -15,6 +15,7 @@ function scale(action){
         $('#cmsinn-container').removeClass('scale-down');
     }
 }
+
 var scroller = function(){
     var scrollToTop = $(window).scrollTop();
     var elementHeight = $('#cmsinn-container').height();
@@ -44,46 +45,31 @@ var scroller = function(){
     }
 };
 
-var controls = function(){
-    //$('#cmsinn-container').sticky({});
+Template.cmsinn_controls.events({
+    currentPlugin: false,
+    'click .js-plugin': function(e,tmpl){
+        var el, plugin;
+        el = $(e.currentTarget);
+        plugin = el.data('plugin');
+        $('.js-plugin').removeClass('current');
+
+        if(plugin == 'disable' || plugin == this.currentPlugin){
+            this.currentPlugin = false;
+            CmsInn.disable();
+        } else if(plugin != this.currentPlugin){
+            el.addClass('current');
+            CmsInn.toggle(plugin);
+            this.currentPlugin = plugin;
+        }
+    }
+});
+
+
+Template['cmsinn_controls'].rendered = function(){
     $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});
-
-    $('#cmsinn_translations').on('click', function(event){
-        CmsInn.toggle('label');
-    });
-    $('#cmsinn_navigation').on('click', function(event){
-        CmsInn.toggle('navigation');
-    });
-    $('#cmsinn_structure').on('click', function(event){
-        CmsInn.toggle('record');
-    });
-    $('#cmsinn_image').on('click', function(event){
-        CmsInn.toggle('image');
-    });
-    $('#cmsinn_locale').on('click', function(event){
-        CmsInn.toggle('locale');
-    });
-    $('#cmsinn_sortable').on('click', function(event){
-        CmsInn.toggle('sortable');
-    });
-    $('#cmsinn_deletable').on('click', function(event){
-        CmsInn.toggle('deletable');
-    });
-    $('#cmsinn_versioning').on('click', function(event){
-        CmsInn.toggle('versioning', true);
-    });
-    $('#cmsinn_disable').on('click', function(event){
-        CmsInn.disable();
-    });
-
-    $('#cmsinn_dashboard').on('click', function(event){
-        Router.go('/dashboard');
-    });
     $(window).scroll(scroller)
     $(window).resize(scroller);
-}
-
-Template['cmsinn_controls_left'].rendered = controls;
+};
 
 Meteor.startup(function(){
     $('body').on('click', '[data-au-locale]', function(event){
