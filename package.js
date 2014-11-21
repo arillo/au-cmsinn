@@ -15,30 +15,32 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore@1.0.0', 'ui@1.0.0', 'iron:router@0.9.1', 'deps@1.0.0', 'templating@1.0.0', 'alanning:roles@1.2.12'], ['client', 'server']);
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'chathuraa:x-editable-bootstrap@1.5.1'], ['client']);
+    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12'], ['client', 'server']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'arillo:meteor-x-editable@1.5.2-1'], ['client']);
 
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
     api.add_files('lib/plugins/core.js', ['client', 'server']);
 
     api.add_files('lib/utils.js', ['client', 'server']);
 
-    api.add_files('lib/3rd/font-awesome.min.css', ['client']);
-    api.add_files('client/css/font-awesome-override.css', ['client']);
+    // api.add_files('lib/3rd/font-awesome.min.css', ['client']);
+    // api.add_files('client/css/font-awesome-override.css', ['client']);
 
     api.add_files('assets/trash-icon.png', ['client'], {isAsset: true});
+    // api.add_files('assets/webkit-select-black.svg', ['client'], {isAsset: true});
 
-    api.add_files('lib/3rd/wysiwyg-color.css', ['client']);
-    api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.css', ['client']);
+    // api.add_files('lib/3rd/wysiwyg-color.css', ['client']);
+    // api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.css', ['client']);
 
-    api.add_files('lib/3rd/wysihtml5-0.3.0.js', ['client']);
-    api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.js', ['client']);
+    // api.add_files('lib/3rd/wysihtml5-0.3.0.js', ['client']);
+    // api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.js', ['client']);
 
-    api.add_files('lib/3rd/wysihtml5.js', ['client']);
+    // api.add_files('lib/3rd/wysihtml5.js', ['client']);
 
     api.add_files('client/views/controls.html', ['client']);
     api.add_files('client/views/controls.js', ['client']);
 
+    api.add_files('client/css/icons.css', ['client']);
     api.add_files('client/css/main.css', ['client']);
 
     api.add_files('lib/plugins/image.js', ['client', 'server']);

@@ -2,65 +2,74 @@
 </template>
 
 <template name="cmsinn_controls">
-    <div class="drager">
-        <div id="cmsinn-container" class="container">
+    <div id="au-sidebar" class="au-sidebar">
 
-            <div class="row clearfix">    
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="disable"><i class="fa fa-power-off fa-2x"></i></button>
-                </div>
-            </div>
-            <!-- editor role -->
-            <div class="row clearfix">    
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="versioning"><i class="fa fa-paper-plane-o fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block js-plugin" title="Translations edit mode" data-plugin="label"><i class="fa fa-edit fa-2x"></i></button>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-1 column control">
-                     <button type="button" class="btn btn-default btn-block js-plugin" title="Image edit mode" data-plugin="image"><i class="fa fa-image fa-2x"></i></button>
-                </div>
-            </div>
+        <ul class="au-sidebar_list">
+            <li class="au-sidebar_item">
+                <a herf="#" class="au-sidebar_link js-plugin" data-plugin="disable" title="Disable CMS action">
+                    <i class="au-sidebar_link_icon auicon auicon-off"></i>
+                    <span class="au-sidebar_link_label">Disable</span>
+                </a>
+            </li>
+            {{!-- editor role --}}
+            <li class="au-sidebar_item">
+                <a herf="#" class="au-sidebar_link js-plugin" data-plugin="versioning" title="Publish version">
+                    <i class="au-sidebar_link_icon auicon auicon-versions"></i>
+                    <span class="au-sidebar_link_label">Publish</span>
+                </a>
+            </li>
+            <li class="au-sidebar_item">
+                <a herf="#" class="au-sidebar_link js-plugin" data-plugin="label" title="Edit text">
+                    <i class="au-sidebar_link_icon auicon auicon-edit"></i>
+                    <span class="au-sidebar_link_label">Edit</span>
+                </a>
+            </li>
+            <li class="au-sidebar_item">
+                <a herf="#" class="au-sidebar_link js-plugin" data-plugin="image" title="Edit images">
+                    <i class="au-sidebar_link_icon auicon auicon-img"></i>
+                    <span class="au-sidebar_link_label">Image</span>
+                </a>
+            </li>
 
-            <!-- admin role -->
+            {{!-- admin role --}}
             {{#if isInRole 'admin'}}
-                <div class="row clearfix">
-                    <div class="col-md-1 column control">
-                         <button type="button" class="btn btn-default btn-block js-plugin" title="Record edit mode" data-plugin="record"><i class="fa fa-puzzle-piece fa-2x"></i></button>
-                    </div>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-md-1 column control">
-                         <button type="button" class="btn btn-default btn-block js-plugin" title="Navigation edit mode" data-plugin="navigation"><i class="fa fa-link fa-2x"></i></button>
-                    </div>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-md-1 column control">
-                         <button type="button" class="btn btn-default btn-block js-plugin" title="Locale edit mode" data-plugin="locale"><i class="fa fa-globe fa-2x"></i></button>
-                    </div>
-                </div>   
-                <div class="row clearfix">
-                    <div class="col-md-1 column control">
-                         <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="sortable"><i class="fa fa-reorder fa-2x"></i></button>
-                    </div>
-                </div>
-                <div class="row clearfix">
-                    <div class="col-md-1 column control">
-                         <button type="button" class="btn btn-default btn-block js-plugin" data-plugin="deletable"><i class="fa fa-trash-o fa-2x"></i></button>
-                    </div>
-                </div>
+                <li class="au-sidebar_item">
+                    <a herf="#" class="au-sidebar_link js-plugin" data-plugin="record" title="Edit records">
+                        <i class="au-sidebar_link_icon auicon auicon-add"></i>
+                        <span class="au-sidebar_link_label">Records</span>
+                    </a>
+                </li>
+                <li class="au-sidebar_item">
+                    <a herf="#" class="au-sidebar_link js-plugin" data-plugin="navigation" title="Edit navigation">
+                        <i class="au-sidebar_link_icon auicon auicon-link"></i>
+                        <span class="au-sidebar_link_label">Link</span>
+                    </a>
+                </li>
+                <li class="au-sidebar_item">
+                    <a herf="#" class="au-sidebar_link js-plugin" data-plugin="locale" title="Edit locale">
+                        <i class="au-sidebar_link_icon auicon auicon-lang"></i>
+                        <span class="au-sidebar_link_label">Locale</span>
+                    </a>
+                </li>
+                <li class="au-sidebar_item">
+                    <a herf="#" class="au-sidebar_link js-plugin" data-plugin="sortable" title="Sort elements">
+                        <i class="au-sidebar_link_icon auicon auicon-reorder"></i>
+                        <span class="au-sidebar_link_label">Sort</span>
+                    </a>
+                </li>
+                <li class="au-sidebar_item">
+                    <a herf="#" class="au-sidebar_link js-plugin" data-plugin="deletable" title="Delete elements">
+                        <i class="au-sidebar_link_icon auicon auicon-delete"></i>
+                        <span class="au-sidebar_link_label">Delete</span>
+                    </a>
+                </li>
             {{/if}}
-            <!-- <div class="row clearfix">    
+            {{!-- <div class="row clearfix">
                 <div class="col-md-1 column control">
                      <button type="button" class="btn btn-default btn-block" id="cmsinn_dashboard"><i class="fa fa-dashboard fa-2x"></i></button>
                 </div>
-            </div> -->
-            
-        </div>
+            </div> --}}
+
+        </ul>
     </div>
 </template>

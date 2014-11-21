@@ -1,14 +1,329 @@
+/* ====================================== */
+/* CMS Styles
+/* ====================================== */
+
+
+/* Body Class Sidebar
+/* -------------------------------------- */
+
+.au-is-active {
+  margin-left: 70px;
+}
+
+
+/* Inline styles
+/* -------------------------------------- */
+
+.image-mark,
+.au-mark {
+  outline: 2px dotted #0d0 !important;
+  outline-offset: -2px;
+  position: relative;
+  z-index: 999;
+  min-width: 30px !important;
+  min-height: 30px !important;
+}
+
+
+
+/* ====================================== */
+/* Sidebar
+/* ====================================== */
+
+#au-sidebar.au-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 69px;
+  background: #111;
+  z-index: 999999;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  border-right: 1px solid white;
+  padding-top: 10px;
+}
+
+
+/* Sidebar - Items
+/* -------------------------------------- */
+
+#au-sidebar .au-sidebar_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#au-sidebar .au-sidebar_item {
+  border-bottom: 1px solid #2f2f2f;
+  margin: 0 5px
+}
+
+
+/* Sidebar - Links
+/* -------------------------------------- */
+
+#au-sidebar .au-sidebar_link:hover,
+#au-sidebar .au-sidebar_link:visited,
+#au-sidebar .au-sidebar_link:focus,
+#au-sidebar .au-sidebar_link:link,
+#au-sidebar .au-sidebar_link {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  display: block;
+  color: #999;
+  text-decoration: none;
+  outline: none;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: none;
+  padding: 7px 5px 5px;
+  margin: 0 -5px;
+  cursor: pointer;
+}
+
+#au-sidebar .au-sidebar_link.current {
+  color: white;
+  background: #333;
+}
+
+/* Icons */
+#au-sidebar .au-sidebar_link_icon {
+  font-size: 24px;
+  color: #666;
+}
+
+#au-sidebar .current .au-sidebar_link_icon {
+  color: #ddd;
+}
+
+/* Label */
+#au-sidebar .au-sidebar_link_label {
+  display: block;
+}
+
+
+
+/* ====================================== */
+/* Tooltip
+/* ====================================== */
+
+.au-popover-tip-cover {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9990;
+  background: rgba(0,0,0,.7);
+}
+
+.au-popover-tip {
+  position: absolute;
+  padding: 10px;
+  z-index: 9999;
+  width: 300px;
+  background: #e5e5e5;
+  border-radius: 2px;
+}
+
+.au-popover-tip .tip-arrow {
+  position: absolute;
+  z-index: 3;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 8px;
+  width: 0;
+  height: 0;
+}
+
+.au-popover-tip .tip-arrow-top {
+  margin-top: -16px;
+  margin-left: -8px;
+  top: 0;
+  left: 50%;
+  border-bottom-color: #e5e5e5;
+}
+
+.au-popover-tip .tip-arrow-right {
+  margin-top: -8px;
+  margin-right: -16px;
+  top: 50%;
+  right: 0;
+  border-left-color: #e5e5e5;
+}
+
+
+.au-popover-tip .tip-arrow-bottom {
+  margin-bottom: -16px;
+  margin-left: -8px;
+  bottom: 0;
+  left: 50%;
+  border-top-color: #e5e5e5;
+}
+
+.au-popover-tip .tip-arrow-left {
+  margin-top: -8px;
+  margin-left: -16px;
+  top: 50%;
+  left: 0;
+  border-right-color: #e5e5e5;
+}
+
+
+/* ====================================== */
+/* Forms
+/* ====================================== */
+
+/* Styles for forms located inside the Tooltips / Popovers */
+
+.au-form {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  background: none !important;
+}
+
+/* Forms - Scaffolding
+/* -------------------------------------- */
+
+.au-form_item {
+  margin-top: 10px;
+}
+
+.au-form_item:first-child {
+  margin-top: 0;
+}
+
+
+/* Forms - Labels
+/* -------------------------------------- */
+
+.au-form_label {
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+
+/* Forms - Inpust / Selects
+/* -------------------------------------- */
+
+.au-form textarea,
+.au-form_input {
+  -webkit-appearance: none;
+  border-radius: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  outline: 0;
+  color: #111;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.2;
+  padding: 3px;
+  font-size: 12px;
+  font-weight: normal;
+  height: auto;
+  display: inline-block;
+}
+
+/* Select */
+.au-form_input-select,
+select.au-form_input {
+  border-radius: 2px;
+}
+
+select.au-form_input[multiple],
+.au-form_input-select[multiple] {
+  border-radius: 0;
+  height: auto;
+  background-image: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .au-form_input-select,
+  select.au-form_input {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1cHgiIGhlaWdodD0iNXB4IiB2aWV3Qm94PSIwIDAgMTUgNSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUgNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+ICA8cG9seWdvbiBwb2ludHM9IjAsMCA0LjUsNSA5LDAgIi8+PC9zdmc+);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
+  }
+
+  select.au-form_input[multiple],
+  .au-form_input-select[multiple] {
+    padding: 0;
+    background-image: none;
+  }
+}
+
+
+/* Textarea
+/* -------------------------------------- */
+
+.au-popover-tip textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+
+/* Forms - Buttons
+/* -------------------------------------- */
+
+.au-form_btn {
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-weight: bold;
+  line-height: 1.2;
+  font-size: 12px;
+  padding: 3px 12px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: white;
+  border: 1px solid #555;
+  background-color: #666;
+  cursor: pointer;
+  outline: 0;
+}
+
+
+
+/* ====================================== */
+/* Deletable Plugin
+/* ====================================== */
+
+.au-deletable-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 256px;
+  height: 256px;
+  background: url('../../assets/trash-icon.png') 50%;
+  z-index: 9000;
+}
+
+
+/* ====================================== */
+/* Draggable Styles
+/* ====================================== */
+
+.ui-draggable-dragging {
+  z-index: 999999;
+}
 
 
 /* Editable forms
 ======================================*/
 
-.editable-container {
+/*.editable-container {
   margin-bottom: 5px;
-}
+}*/
 
 /* Inline */
-.editable-input textarea,
+/*.editable-input textarea,
 .editable-input input[type="text"] {
   margin-bottom: 0;
   min-width: 200px;
@@ -20,10 +335,10 @@
 
 .editable-buttons .btn{
   background-image: none;
-}
+}*/
 
 /* wysihtml5 */
-.dropdown-menu li a,
+/*.dropdown-menu li a,
 .editable-wysihtml5 {
   color:#222 !important;
 }
@@ -31,10 +346,10 @@
 .wysihtml5-sandbox {
   border: 0 !important;
   width: 100% !important;
-}
+}*/
 
 /* pop over */
-.popover-content .btn,
+/*.popover-content .btn,
 .popover-content select {
   margin-bottom: 4px;
 }
@@ -47,46 +362,27 @@
 
 .popover-content .btn:hover {
   background-image: none;
-}
+}*/
 
 
 
 /* Control Bar
 ======================================*/
-.drager {
+/*.drager {
   position: absolute;
   z-index:99999;
   width: auto;
 }
 
-#cmsinn-container {
+#au-container {
   position: relative;
   width: auto;
 
-  /*z-index:99999;*/
   opacity: .7;
   -webkit-transition: -webkit-transform .2s ease-in-out;
   -moz-transition: -moz-transform .2s ease-in-out;
   -o-transition: -o-transform .2s ease-in-out;
   transition: transform .2s ease-in-out;
-}
-
-#cmsinn-container:hover {
-  cursor: move;
-}
-
-#cmsinn-container > .row button i {
-  font-size: 1.7em;
-  width: 1.28571429em;
-  text-align: center;
-}
-
-#cmsinn-container > .row button:hover {
-  background-image: none;
-}
-
-#cmsinn-container > .row {
-  width:56px;
 }
 
 .scale-down {
@@ -131,14 +427,12 @@
   z-index:9999;
   display:inline;
 }
+*/
 
-.au-mark {
   /*background: rgba(0,0,0,.7);*/
-  outline: 1px dashed #FF0000 !important;
   /*padding: 0 10px 0 10px;*/
-}
 
-.image-mark{
+/*.image-mark{
     -webkit-transition: all 0.50s ease-in-out;
     -moz-transition: all 0.50s ease-in-out;
     -ms-transition: all 0.50s ease-in-out;
@@ -148,41 +442,41 @@
     -moz-border-radius: 1px;
     border-radius: 1px;
 }
-
-.image-drag-enter{
+*/
+/*.image-drag-enter{
     -webkit-transition: all 0.50s ease-in-out;
     -moz-transition: all 0.50s ease-in-out;
     -ms-transition: all 0.50s ease-in-out;
     -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #75FF69; /* some kind of blue border */
+    border: 1px dashed #75FF69;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
 }
-
-.image-drag-leave{
+*/
+/*.image-drag-leave{
     -webkit-transition: all 0.50s ease-in-out;
     -moz-transition: all 0.50s ease-in-out;
     -ms-transition: all 0.50s ease-in-out;
     -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #FF2929; /* some kind of blue border */
+    border: 1px dashed #FF2929;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
-}
+}*/
 
-.image-drag-drop{
+/*.image-drag-drop{
     -webkit-transition: all 0.50s ease-in-out;
     -moz-transition: all 0.50s ease-in-out;
     -ms-transition: all 0.50s ease-in-out;
     -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #FF0000; /* some kind of blue border */
+    border: 1px dashed #FF0000;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
-}
+}*/
 
-.btn-block.current{
+/*.btn-block.current{
   background: #000;
   color:#CCC
 }
@@ -194,4 +488,4 @@
 .editable-click, a.editable-click, a.editable-click:hover {
   outline: 1px dashed #08C;
   border: 0;
-}
+}*/
