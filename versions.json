@@ -78,35 +78,35 @@
     ],
     [
       "iron:controller",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "iron:core",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "iron:dynamic-template",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "iron:layout",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "iron:location",
-      "1.0.1"
+      "1.0.2"
     ],
     [
       "iron:middleware-stack",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "iron:router",
-      "1.0.1"
+      "1.0.2"
     ],
     [
       "iron:url",
-      "1.0.0"
+      "1.0.2"
     ],
     [
       "jquery",
