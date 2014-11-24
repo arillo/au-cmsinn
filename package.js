@@ -43,6 +43,9 @@ Package.on_use(function (api, where) {
     api.add_files('client/css/icons.css', ['client']);
     api.add_files('client/css/main.css', ['client']);
 
+    // added iron:router plugin 
+    api.add_files('lib/plugins/ironrouter.js', ['client', 'server']);
+
     api.add_files('lib/plugins/image.js', ['client', 'server']);
     api.add_files('lib/plugins/locale.js', ['client', 'server']);
     api.add_files('lib/plugins/record.js', ['client', 'server']);
