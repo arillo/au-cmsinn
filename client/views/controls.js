@@ -68,6 +68,7 @@ Template.cmsinn_controls.events({
     },
     'click .js-save': function(e,tmpl){
         CmsInn.plugins.versioning.enable();
+        this.currentPlugin = false;
         CmsInn.disable();
         
         $('.js-plugin').removeClass('current');
