@@ -40,7 +40,6 @@
   z-index: 999999;
   font-family: "Helvetica Neue", Arial, sans-serif;
   border-right: 1px solid white;
-  padding-top: 10px;
 }
 
 
@@ -53,9 +52,21 @@
   list-style: none;
 }
 
+
 #au-sidebar .au-sidebar_item {
-  border-bottom: 1px solid #2f2f2f;
-  margin: 0 5px
+  margin: 0;
+  padding: 0;
+  position: relative;;
+}
+
+#au-sidebar .au-sidebar_item:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: #2f2f2f;
 }
 
 
@@ -78,30 +89,52 @@
   font-weight: bold;
   font-style: normal;
   text-transform: none;
-  padding: 7px 5px 5px;
-  margin: 0 -5px;
+  padding: 8px 10px;
+  margin: 0;
   cursor: pointer;
+  margin-top: -1px;
 }
 
-#au-sidebar .au-sidebar_link.current {
-  color: white;
-  background: #333;
+#au-sidebar .au-sidebar_link {
+  position: relative;
 }
 
-/* Icons */
+
 #au-sidebar .au-sidebar_link_icon {
   font-size: 24px;
   color: #666;
+}
+
+#au-sidebar .au-sidebar_link_label {
+  display: block;
+}
+
+#au-sidebar .au-sidebar_item:first-child .au-sidebar_link {
+  padding-top: 15px;
+}
+
+/* Current */
+#au-sidebar .au-sidebar_link.current {
+  color: white;
+  background: #333;
+  z-index: 2;
 }
 
 #au-sidebar .current .au-sidebar_link_icon {
   color: #ddd;
 }
 
-/* Label */
-#au-sidebar .au-sidebar_link_label {
-  display: block;
+/* Draft */
+#au-sidebar .au-sidebar_link.draft {
+  color: white;
+  background: #020;
+  z-index: 2;
 }
+
+#au-sidebar .draft .au-sidebar_link_icon {
+  color: #0a0;
+}
+
 
 
 
