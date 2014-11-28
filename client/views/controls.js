@@ -54,7 +54,10 @@ Template.cmsinn_controls.events({
         plugin = el.data('plugin');
         $('.js-plugin').removeClass('current');
 
-        if(plugin == 'disable' || plugin == this.currentPlugin){
+        // activate save button
+        $('.js-save').addClass('draft');
+
+        if(plugin == this.currentPlugin){
             this.currentPlugin = false;
             CmsInn.disable();
         } else if(plugin != this.currentPlugin){
@@ -62,6 +65,14 @@ Template.cmsinn_controls.events({
             CmsInn.toggle(plugin);
             this.currentPlugin = plugin;
         }
+    },
+    'click .js-save': function(e,tmpl){
+        CmsInn.plugins.versioning.enable();
+        this.currentPlugin = false;
+        CmsInn.disable();
+        
+        $('.js-plugin').removeClass('current');
+        $('.js-save').removeClass('draft');
     }
 });
 
