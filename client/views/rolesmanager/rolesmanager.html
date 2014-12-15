@@ -1,0 +1,24 @@
+<template name="cmsinn_rolesmanager">
+<div class="js-cmsinn-rolesmanager">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: black; opacity: 0.5;">
+    </div>
+    <div class="form" style="position: absolute; width: 80%; height: 80%; min-width: 400px; top: 10%; left: 10%; background: white;">
+        <h2>Roles Manager</h2>
+        <table>
+        {{#each users}}
+            <tr>
+                <td>{{name}}, , {{_id}}</td>
+                <td>{{role}}</td>
+                <td>
+                    <select>
+                    {{#each ../roles}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                    </select>
+                </td>
+            </tr>
+        {{/each}}
+        </table>
+    </div>
+</div>
+</template>
