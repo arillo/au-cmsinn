@@ -10,11 +10,15 @@
                 <td>{{name}}</td>
                 <td>{{role}}</td>
                 <td>
-                    <select data-userid="{{_id}}">
+                    {{#if rolesSelectOptions}}
+                    <select class="js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
                     {{#each rolesSelectOptions}}
                     <option value="{{value}}" {{selected}}>{{value}}</option>
                     {{/each}}
                     </select>
+                    {{else}}
+                    This is you
+                    {{/if}}
                 </td>
             </tr>
         {{/each}}

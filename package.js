@@ -65,6 +65,9 @@ Package.on_use(function (api, where) {
 
     api.add_files('lib/service.js', ['client', 'server']);
 
+    api.add_files('server/methods/users.js', ['server']);
+    api.add_files('server/publish/users.js', ['server']);
+
     api.export('CmsInn');
     api.export('RemoteCollectionStorageAdapter', ['client', 'server'], {testOnly: true});
     api.export('AuCmsInn', ['client', 'server'], {testOnly: true});
