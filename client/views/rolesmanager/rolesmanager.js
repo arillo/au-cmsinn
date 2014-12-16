@@ -8,6 +8,8 @@ perPage = 20;
 users = [];
 totalUsers = 0;
 
+Meteor.subscribe('users');
+
 Template.cmsinn_rolesmanager.events({
 
     'keyup .js-cmsinn-rolesmanager-search': function(e, tmpl){
