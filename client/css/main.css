@@ -230,6 +230,23 @@
   margin-top: 0;
 }
 
+.au-form_item-large {
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+
+
+/* Forms - Title
+/* -------------------------------------- */
+
+.au-form_title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.1;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
 
 /* Forms - Labels
 /* -------------------------------------- */
@@ -323,6 +340,30 @@ select.au-form_input[multiple],
 }
 
 
+/* Forms - Table
+/* -------------------------------------- */
+
+.au-form_table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.2;
+  font-size: 12px;
+}
+
+.au-form_table th,
+.au-form_table td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.au-form_table th {
+  font-weight: bold;
+}
+
 
 /* ====================================== */
 /* Deletable Plugin
@@ -346,6 +387,45 @@ select.au-form_input[multiple],
 .ui-draggable-dragging {
   z-index: 999999;
 }
+
+
+/* ====================================== */
+/* Modal
+/* ====================================== */
+
+.au-modal {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.au-modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  right: 0;
+  bottom: 0;
+  opacity: .6;
+  background-color: black;
+}
+
+.au-modal_content {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 30px;
+  background-color: white;
+  min-height: 100%;
+  max-width: 500px;
+  border: 20px solid transparent;
+  background-clip: padding-box;
+}
+
 
 
 /* Editable forms

@@ -1,41 +1,49 @@
 <template name="cmsinn_rolesmanager">
-<div class="js-cmsinn-rolesmanager">
-    <div class="overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: black; opacity: 0.5;">
-    </div>
-    <div class="form" style="position: absolute; width: 80%; height: 80%; min-width: 400px; top: 10%; left: 10%; background: white;">
-        <h2>Roles Manager</h2>
-        <input class="js-cmsinn-rolesmanager-search" type="text" placeholder="Search">
-        <table>
-            <tr>
-                <th class="js-cmsinn-rolesmanager-sort-option" data-value="name" style="cursor: pointer;">name</th>
-                <th class="js-cmsinn-rolesmanager-sort-option" data-value="role" style="cursor: pointer;">role</th>
-            </tr>
-        {{#each users}}
-            <tr>
-                <td>{{name}}</td>
-                <td>
-                    {{#if rolesSelectOptions}}
-                    <select class="js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
-                    {{#each rolesSelectOptions}}
-                    <option value="{{value}}" {{selected}}>{{value}}</option>
-                    {{/each}}
-                    </select>
-                    {{else}}
-                    {{role}}
-                    {{/if}}
-                </td>
-            </tr>
-        {{/each}}
-        </table>
-        <ul class="js-cmsinn-rolesmanager-pager">
-        {{#each pages}}
-            {{#if isCurrentPage this}}
-            <li class="selected" data-value="{{this}}" style="cursor: pointer; text-decoration: underline;">{{this}}</li>
-            {{else}}
-            <li data-value="{{this}}" style="cursor: pointer;">{{this}}</li>
-            {{/if}}
-        {{/each}}
-        </ul>
+<div class="au-modal js-cmsinn-rolesmanager">
+    <div class="au-modal_overlay"></div>
+
+    <div class="au-modal_content">
+        <div class="au-form">
+            <h2 class="au-form_title">Roles Manager</h2>
+
+            <div class="au-form_item au-form_item-large">
+                <input class="au-form_input js-cmsinn-rolesmanager-search" type="text" placeholder="Search">
+            </div>
+
+            <table class="au-form_table">
+                <thead>
+                    <tr>
+                        <th class="js-cmsinn-rolesmanager-sort-option" data-value="name" style="cursor: pointer;">Name</th>
+                        <th class="js-cmsinn-rolesmanager-sort-option" data-value="role" style="cursor: pointer;">Role</th>
+                    </tr>
+                </thead>
+            {{#each users}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>
+                        {{#if rolesSelectOptions}}
+                        <select class="js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
+                        {{#each rolesSelectOptions}}
+                        <option value="{{value}}" {{selected}}>{{value}}</option>
+                        {{/each}}
+                        </select>
+                        {{else}}
+                        {{role}}
+                        {{/if}}
+                    </td>
+                </tr>
+            {{/each}}
+            </table>
+            <ul class="js-cmsinn-rolesmanager-pager">
+            {{#each pages}}
+                {{#if isCurrentPage this}}
+                <li class="selected" data-value="{{this}}" style="cursor: pointer; text-decoration: underline;">{{this}}</li>
+                {{else}}
+                <li data-value="{{this}}" style="cursor: pointer;">{{this}}</li>
+                {{/if}}
+            {{/each}}
+            </ul>
+        </div>
     </div>
 </div>
 </template>
