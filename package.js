@@ -37,8 +37,13 @@ Package.on_use(function (api, where) {
 
     // api.add_files('lib/3rd/wysihtml5.js', ['client']);
 
-    api.add_files('client/views/controls.html', ['client']);
-    api.add_files('client/views/controls.js', ['client']);
+    api.add_files('client/views/controls/controls.html', ['client']);
+    api.add_files('client/views/controls/controls.js', ['client']);
+
+    api.add_files('client/views/settings/settings.html', ['client']);
+
+    api.add_files('client/views/rolesmanager/rolesmanager.html', ['client']);
+    api.add_files('client/views/rolesmanager/rolesmanager.js', ['client']);
 
     api.add_files('client/css/icons.css', ['client']);
     api.add_files('client/css/main.css', ['client']);
@@ -54,10 +59,15 @@ Package.on_use(function (api, where) {
     api.add_files('lib/plugins/navigation.js', ['client', 'server']);
     api.add_files('lib/plugins/versioning.js', ['client', 'server']);
     api.add_files('lib/plugins/label.js', ['client', 'server']);
+    api.add_files('lib/plugins/rolesmanager.js', ['client', 'server']);
+    api.add_files('lib/plugins/settings.js', ['client', 'server']);
 
     api.add_files('lib/models/content.js', ['client', 'server']);
 
     api.add_files('lib/service.js', ['client', 'server']);
+
+    api.add_files('server/methods/users.js', ['server']);
+    api.add_files('server/publish/users.js', ['server']);
 
     api.export('CmsInn');
     api.export('RemoteCollectionStorageAdapter', ['client', 'server'], {testOnly: true});

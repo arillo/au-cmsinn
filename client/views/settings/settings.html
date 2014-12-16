@@ -1,0 +1,21 @@
+<template name="cmsinn_settings">
+    <div class="au-modal js-cmsinn-settings">
+        <div class="au-modal_overlay"></div>
+
+        <div class="au-modal_content">
+            <div class="au-form">
+                <h2 class="au-form_title">Website Settings</h2>
+                {{#each fields}}
+                    {{> Template.dynamic template=type data=this}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="cmsinn_settings_string">
+    <div class="au-form_item">
+        <label class="au-form_label" for="{{name}}">{{label}}</label>
+        <input name="{{name}}" class="au-form_input js-cmsinn-settings-field" type="text" value="{{websiteSetting name}}">
+    </div>
+</template>
