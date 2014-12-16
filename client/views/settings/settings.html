@@ -1,19 +1,21 @@
 <template name="cmsinn_settings">
-<div class="js-cmsinn-settings">
-    <div class="overlay" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: black; opacity: 0.5;">
+    <div class="au-modal js-cmsinn-settings">
+        <div class="au-modal_overlay"></div>
+
+        <div class="au-modal_content">
+            <div class="au-form">
+                <h2 class="au-form_title">Website Settings</h2>
+                {{#each fields}}
+                    {{> Template.dynamic template=type data=this}}
+                {{/each}}
+            </div>
+        </div>
     </div>
-    <div class="form" style="position: absolute; width: 80%; height: 80%; min-width: 400px; top: 10%; left: 10%; background: white;">
-        <h2>Website Settings</h2>
-        <ul>
-        {{#each fields}}
-            <li>{{> Template.dynamic template=type data=this}}</li>
-        {{/each}}
-        </ul>
-    </div>
-</div>
 </template>
 
 <template name="cmsinn_settings_string">
-    <label for="{{name}}">{{label}}</label>
-    <input name="{{name}}" class="js-cmsinn-settings-field" type="text" value="{{websiteSetting name}}">
+    <div class="au-form_item">
+        <label class="au-form_label" for="{{name}}">{{label}}</label>
+        <input name="{{name}}" class="au-form_input js-cmsinn-settings-field" type="text" value="{{websiteSetting name}}">
+    </div>
 </template>
