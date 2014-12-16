@@ -6,10 +6,13 @@
         <h2>Roles Manager</h2>
         <input class="js-cmsinn-rolesmanager-search" type="text" placeholder="Search">
         <table>
+            <tr>
+                <th class="js-cmsinn-rolesmanager-sort-option" data-value="name" style="cursor: pointer;">name</th>
+                <th class="js-cmsinn-rolesmanager-sort-option" data-value="role" style="cursor: pointer;">role</th>
+            </tr>
         {{#each users}}
             <tr>
                 <td>{{name}}</td>
-                <td>{{role}}</td>
                 <td>
                     {{#if rolesSelectOptions}}
                     <select class="js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
@@ -18,12 +21,21 @@
                     {{/each}}
                     </select>
                     {{else}}
-                    This is you
+                    {{role}}
                     {{/if}}
                 </td>
             </tr>
         {{/each}}
         </table>
+        <ul class="js-cmsinn-rolesmanager-pager">
+        {{#each pages}}
+            {{#if isCurrentPage this}}
+            <li class="selected" data-value="{{this}}" style="cursor: pointer; text-decoration: underline;">{{this}}</li>
+            {{else}}
+            <li data-value="{{this}}" style="cursor: pointer;">{{this}}</li>
+            {{/if}}
+        {{/each}}
+        </ul>
     </div>
 </div>
 </template>

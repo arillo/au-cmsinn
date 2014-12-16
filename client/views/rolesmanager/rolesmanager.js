@@ -1,11 +1,32 @@
-var dep, keywords;
+var dep, keywords, sortBy, currentPage, perPage, users, totalUsers;
+
 dep = new Deps.Dependency();
 keywords = '';
+sortBy = 'name';
+currentPage = 1;
+perPage = 20;
+users = [];
+totalUsers = 0;
 
 Template.cmsinn_rolesmanager.events({
 
     'keyup .js-cmsinn-rolesmanager-search': function(e, tmpl){
+        e.preventDefault();
         keywords = tmpl.$('.js-cmsinn-rolesmanager-search').val();
+        currentPage = 1;
+        dep.changed();
+    },
+
+    'click .js-cmsinn-rolesmanager-sort-option': function(e, tmpl){
+        e.preventDefault();
+        sortBy = $(e.currentTarget).data('value') || 'name';
+        currentPage = 1;
+        dep.changed();
+    },
+
+    'click .js-cmsinn-rolesmanager-pager': function(e, tmpl){
+        e.preventDefault();
+        currentPage = $(e.target).data('value') || 1;
         dep.changed();
     }
 
@@ -14,9 +35,10 @@ Template.cmsinn_rolesmanager.events({
 Template.cmsinn_rolesmanager.helpers({
 
     users: function(){
-        var users, currentUser, currentUserId;
+        var currentUser, currentUserId, start, end;
 
-        users = [];
+        users.length = 0;
+
         currentUser = Meteor.user();
         currentUserId = currentUser && currentUser._id;
 
@@ -34,15 +56,39 @@ Template.cmsinn_rolesmanager.helpers({
 
         dep.depend();
 
-        // if(!keywords){
-        //     return users;
-        // }
-
-        return _(users).filter(function(user){
+        users = _.chain(users)
+        .filter(function(user){
             var pattern;
             pattern = new RegExp(keywords, 'i');
             return pattern.test(user.name);
-        });
+        })
+        .sortBy(function(user){
+            return user[sortBy];
+        })
+        .value();
+
+        totalUsers = users.length;
+
+        start = ((currentPage - 1) * perPage);
+        end = ((currentPage - 1) * perPage) + perPage;
+
+        return users.slice(start, end);
+    },
+
+    pages: function(){
+        var totalPages;
+
+        totalPages = Math.ceil(users.length / perPage);
+
+        dep.depend();
+
+        return _.range(1, totalPages);
+    },
+
+    isCurrentPage: function(page){
+        dep.depend();
+
+        return currentPage === page;
     }
 
 });
