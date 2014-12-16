@@ -358,6 +358,18 @@ select.au-form_input[multiple],
 .au-form_table td {
   text-align: left;
   vertical-align: top;
+  border-bottom: 1px solid #ddd;
+  padding: 7px;
+}
+
+.au-form_table tr th:first-child,
+.au-form_table tr td:first-child {
+  padding-left: 0;
+}
+
+.au-form_table tr th:last-child,
+.au-form_table tr td:last-child {
+  padding-right: 0;
 }
 
 .au-form_table th {
@@ -424,6 +436,37 @@ select.au-form_input[multiple],
   max-width: 500px;
   border: 20px solid transparent;
   background-clip: padding-box;
+}
+
+
+/* ====================================== */
+/* Pagination
+/* ====================================== */
+
+.au-pagination {
+  list-style: none;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.2;
+  font-size: 0;
+  text-align: center;
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+.au-pagination_item {
+  display: inline-block;
+  margin-left: -1px;
+  border: 1px solid #ddd;
+  padding: 4px 9px;
+  font-size: 12px;
+  color: #111;
+  cursor: pointer;
+}
+
+.au-pagination_item-selected {
+  color: #999;
+  cursor: default;
 }
 
 

@@ -22,9 +22,9 @@
                     <td>{{name}}</td>
                     <td>
                         {{#if rolesSelectOptions}}
-                        <select class="js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
+                        <select class="au-form_input au-form_input-select js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
                         {{#each rolesSelectOptions}}
-                        <option value="{{value}}" {{selected}}>{{value}}</option>
+                            <option value="{{value}}" {{selected}}>{{value}}</option>
                         {{/each}}
                         </select>
                         {{else}}
@@ -34,14 +34,14 @@
                 </tr>
             {{/each}}
             </table>
-            <ul class="js-cmsinn-rolesmanager-pager">
-            {{#each pages}}
-                {{#if isCurrentPage this}}
-                <li class="selected" data-value="{{this}}" style="cursor: pointer; text-decoration: underline;">{{this}}</li>
-                {{else}}
-                <li data-value="{{this}}" style="cursor: pointer;">{{this}}</li>
-                {{/if}}
-            {{/each}}
+            <ul class="au-pagination js-cmsinn-rolesmanager-pager">
+                {{#each pages}}
+                    {{#if isCurrentPage this}}
+                    <li class="au-pagination_item au-pagination_item-selected" data-value="{{this}}">{{this}}</li>
+                    {{else}}
+                    <li class="au-pagination_item" data-value="{{this}}">{{this}}</li>
+                    {{/if}}
+                {{/each}}
             </ul>
         </div>
     </div>
