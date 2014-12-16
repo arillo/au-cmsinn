@@ -43,6 +43,7 @@ Package.on_use(function (api, where) {
     api.add_files('client/views/settings/settings.html', ['client']);
 
     api.add_files('client/views/rolesmanager/rolesmanager.html', ['client']);
+    api.add_files('client/views/rolesmanager/rolesmanager.js', ['client']);
 
     api.add_files('client/css/icons.css', ['client']);
     api.add_files('client/css/main.css', ['client']);
