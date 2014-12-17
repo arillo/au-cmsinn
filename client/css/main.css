@@ -321,6 +321,7 @@ select.au-form_input[multiple],
 /* -------------------------------------- */
 
 .au-form_btn {
+  font-family: "Helvetica Neue", Arial, sans-serif;
   display: inline-block;
   border-radius: 2px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);

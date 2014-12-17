@@ -27,7 +27,7 @@
   border-radius: 6px;
   padding: 0 6px;
   position: relative;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .hallotoolbar span {
@@ -95,4 +95,171 @@
   line-height: 32px;
   vertical-align: middle;
   display: inline-block;
+}
+
+
+/* ====================================== */
+/* Link Modal
+/* ====================================== */
+
+
+/* Overlay
+/* -------------------------------------- */
+
+.ui-widget-overlay.ui-front {
+  position: fixed;
+  top: 0;
+  left: 70px;
+  right: 0;
+  bottom: 0;
+  opacity: .6;
+  background: black;
+  z-index: 999;
+}
+
+
+/* Box
+/* -------------------------------------- */
+
+.ui-dialog.ui-widget.ui-widget-content {
+  background: #fff;
+  z-index: 9999 !important;
+  border: 0;
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
+  padding: 0;
+  overflow: hidden;
+/*  -webkit-transform: translateX(-35px);
+  -moz-transform: translateX(-35px);
+  -ms-transform: translateX(-35px);
+  transform: translateX(-35px);*/
+}
+
+
+/* Box - Header */
+/* -------------------------------------- */
+
+.ui-dialog-titlebar.ui-widget-header {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.1;
+  font-weight: bold;
+  background: #f5f5f5;
+  padding: 15px 20px;
+  border: 0;
+  margin: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+/* Box - Header - Title */
+.ui-dialog-titlebar.ui-widget-header .ui-dialog-title {
+  margin: 0;
+}
+
+/* Box - Header - Close */
+.ui-dialog-titlebar.ui-widget-header .ui-button {
+  background: transparent;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  top: 10px;
+  right: 10px;
+  border-radius: 0;
+  margin: 0;
+}
+
+.ui-dialog-titlebar.ui-widget-header .ui-button:before {
+  content: "";
+  width: 2px;
+  height: 22px;
+  background: #aaa;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -1px;
+  margin-top: -11px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ui-dialog-titlebar.ui-widget-header .ui-button:after {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: #aaa;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -1px;
+  margin-left: -11px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ui-dialog-titlebar.ui-widget-header .ui-button span {
+  display: none;
+}
+
+
+
+/* Box - Content
+/* -------------------------------------- */
+
+.ui-dialog.ui-widget.ui-widget-content .ui-dialog-content {
+  padding: 20px;
+  margin: 0;
+}
+
+.ui-dialog.ui-widget.ui-widget-content .linkForm {
+  margin: 0;
+  padding-right: 75px;
+  position: relative;
+}
+
+.ui-dialog.ui-widget.ui-widget-content .url {
+  -webkit-appearance: none;
+  border-radius: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-right: none;
+  width: 100%;
+  outline: 0;
+  color: #111;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.2;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  height: auto;
+  display: block;
+}
+
+.ui-dialog.ui-widget.ui-widget-content #addlinkButton {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  display: inline-block;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 2px;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  font-weight: bold;
+  line-height: 1.2;
+  font-size: 12px;
+  padding: 5px 12px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: white;
+  border: 1px solid #666;
+  background-color: #666;
+  cursor: pointer;
+  outline: 0;
+  width: 75px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
