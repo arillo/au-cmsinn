@@ -1,0 +1,98 @@
+/* ====================================== */
+/* Hallo Editor overwrite
+/* ====================================== */
+
+
+/* Inline styles while editing
+/* -------------------------------------- */
+
+[contenteditable="true"] {
+  outline: 2px dotted #0d0 !important;
+  outline-offset: -2px;
+  position: relative;
+  z-index: 999;
+  min-width: 30px !important;
+  min-height: 30px !important;
+}
+
+
+
+/* ====================================== */
+/* Toolbar
+/* ====================================== */
+
+.hallotoolbar {
+  white-space: nowrap;
+  background-color: rgba(0,0,0,.7);
+  border-radius: 6px;
+  padding: 0 6px;
+  position: relative;
+  z-index: 9999;
+}
+
+.hallotoolbar span {
+  display: inline-block;
+}
+
+.hallotoolbar .ui-buttonset {
+  margin: 0 0 0 13px;
+  position: relative;
+}
+.hallotoolbar .ui-buttonset:first-child {
+  margin-left: 0;
+}
+
+.hallotoolbar .ui-buttonset:after {
+  content: "";
+  width: 1px;
+  background: rgba(255,255,255,.3);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -7px;
+}
+
+.hallotoolbar .ui-buttonset:first-child:after {
+  display: none;
+}
+
+.hallotoolbar .ui-buttonset > span {
+  margin-left: -1px;
+}
+
+.hallotoolbar .ui-buttonset .ui-button {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: bold;
+  color: #999;
+}
+
+.hallotoolbar .ui-buttonset .ui-state-active {
+  color: #fff;
+}
+
+.hallotoolbar .ui-buttonset .ui-button-text {
+  padding: 2px 4px;
+  line-height: 32px;
+  min-width: 30px;
+}
+
+
+/* Icons
+/* -------------------------------------- */
+
+.icon-bold,
+.icon-italic,
+.icon-list-ol,
+.icon-list-ul,
+.icon-undo,
+.icon-repeat,
+.icon-link {
+  font-size: 24px;
+  line-height: 32px;
+  vertical-align: middle;
+  display: inline-block;
+}
