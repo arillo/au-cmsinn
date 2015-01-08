@@ -1,9 +1,14 @@
 <template name="__home">
 </template>
 
+<template name="cmsinn">
+    {{#if isInRole "editor,admin"}}
+        {{> cmsinn_controls}}
+    {{/if}}
+</template>
+
 <template name="cmsinn_controls">
     <div id="au-sidebar" class="au-sidebar">
-
         <ul class="au-sidebar_list">
             {{!-- 
             <li class="au-sidebar_item">
