@@ -149,14 +149,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999999;
+  z-index: 9990;
   background: rgba(0,0,0,.7);
 }
 
 .au-popover-tip {
   position: absolute;
   padding: 10px;
-  z-index: 9999;
+  z-index: 999999;
   width: 300px;
   background: #e5e5e5;
   border-radius: 2px;
