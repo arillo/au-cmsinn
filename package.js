@@ -16,8 +16,9 @@ Package.on_use(function (api, where) {
     api.imply(['alanning:roles']);
 
     api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12', 'meteorhacks:subs-manager@1.2.2'], ['client', 'server']);
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'arillo:meteor-x-editable@1.5.2-1','matteodem:hallo@1.0.4'], ['client']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4'], ['client']);
 
+    
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
     api.add_files('lib/plugins/core.js', ['client', 'server']);
 
@@ -26,6 +27,7 @@ Package.on_use(function (api, where) {
     // api.add_files('lib/3rd/font-awesome.min.css', ['client']);
     // api.add_files('client/css/font-awesome-override.css', ['client']);
 
+    api.add_files('lib/3rd/jquery.poshytip.js', ['client']);
     api.add_files('assets/trash-icon.png', ['client'], {isAsset: true});
     // api.add_files('assets/webkit-select-black.svg', ['client'], {isAsset: true});
 
