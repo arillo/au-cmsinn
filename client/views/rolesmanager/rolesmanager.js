@@ -96,10 +96,11 @@ Template.cmsinn_rolesmanager.helpers({
 });
 
 function userDataForTemplate(user){
-    var emails, email, profile, name, roles, role;
+    var emails, email, profile, name, roles, role, services;
 
-    emails = user.emails;
     profile = user.profile;
+    emails = user.emails;
+    services = user.services;
 
     if(emails && emails[0]){
         email = emails[0];
@@ -109,8 +110,16 @@ function userDataForTemplate(user){
         }
     }
 
-    if(!email && profile){
+    if(profile){
         name = profile.name;
+    }
+
+    if(services){
+        _.find(services, function(service){
+            if(service.email){
+                return email = service.email;
+            }
+        });
     }
 
     roles = user.roles;
@@ -123,7 +132,7 @@ function userDataForTemplate(user){
 
     return {
         _id: user._id,
-        name: email || name,
+        name: name || email,
         role: role
     };
 }
