@@ -132,7 +132,7 @@ function userDataForTemplate(user){
 
     return {
         _id: user._id,
-        name: name || email,
+        name: email || name,
         role: role
     };
 }
