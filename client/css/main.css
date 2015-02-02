@@ -99,6 +99,11 @@
   position: relative;
 }
 
+#au-sidebar .au-sidebar_link.is-disabled {
+  opacity: .5;
+  cursor: default;
+}
+
 
 #au-sidebar .au-sidebar_link_icon {
   font-size: 24px;
@@ -115,13 +120,14 @@
 
 /* Current */
 #au-sidebar .au-sidebar_link.current {
-  color: white;
+  opacity: 1;
   background: #333;
   z-index: 2;
+  color: white;
 }
 
 #au-sidebar .current .au-sidebar_link_icon {
-  color: #ddd;
+  color: #aaa;
 }
 
 /* Draft */
