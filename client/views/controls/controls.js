@@ -1,67 +1,29 @@
-// function rotate(direction){
-//     if(direction == 'back'){
-//         $('#cmsinn-container').removeClass('rotate-90');
-//         $('.control').removeClass('rotate90');
-//     } else {
-//         $('#cmsinn-container').addClass('rotate-90');
-//         $('.control').addClass('rotate90');
-//     }
-// }
-
-// function scale(action){
-//     if(action == 'down'){
-//         $('#cmsinn-container').addClass('scale-down');
-//     } else {
-//         $('#cmsinn-container').removeClass('scale-down');
-//     }
-// }
-
-// var scroller = function(){
-//     var scrollToTop = $(window).scrollTop();
-//     var elementHeight = $('#cmsinn-container').height();
-//     var topPosition = $('.drager').position().top;
-//     var elementsBottom = elementHeight + $('.drager').position().top;
-//     var bottomOfScreen = scrollToTop + $(window).height();
-
-//     if($(window).height() < $('#cmsinn-container').height()){
-//         scale('down');
-//     } else {
-//         scale('up');
-//     }
-
-//     var top = null;
-//     if(scrollToTop > topPosition){
-//         top = scrollToTop;
-//         if($('#cmsinn-container').hasClass('scale-down')){
-//             top = bottomOfScreen - elementHeight;
-//         }
-//     }
-
-//     if(elementsBottom > bottomOfScreen){
-//         top = bottomOfScreen - elementHeight;
-//     }
-//     if(top != null){
-//         $('.drager').css({top:top+'px'});
-//     }
-// };
-
+var helpers = {
+    clearControls: function(){
+        CmsInn.disable();
+        $('.js-plugin').removeClass('current is-disabled');
+        $('.js-save,.js-cancel').removeClass('draft');
+    }
+}
 Template.cmsinn_controls.events({
-    currentPlugin: false,
     'click .js-plugin': function(e,tmpl){
         e.preventDefault();
         var el, plugin;
         el = $(e.currentTarget);
         plugin = el.data('plugin');
+
+        $('.js-plugin').addClass('is-disabled');
         $('.js-plugin').removeClass('current');
 
         // activate save button
-        $('.js-save').addClass('draft');
+        $('.js-save,.js-cancel').addClass('draft');
 
         if(plugin == this.currentPlugin){
             this.currentPlugin = false;
             CmsInn.disable();
         } else {
             el.addClass('current');
+            el.removeClass('is-disabled');
             CmsInn.enable(plugin);
             this.currentPlugin = plugin;
         }
@@ -69,13 +31,18 @@ Template.cmsinn_controls.events({
     'click .js-save': function(e,tmpl){
         CmsInn.plugins.versioning.enable();
         this.currentPlugin = false;
-        CmsInn.disable();
-        
-        $('.js-plugin').removeClass('current');
-        $('.js-save').removeClass('draft');
+        helpers.clearControls();
+    },
+    'click .js-cancel': function(e,tmpl){
+        this.currentPlugin = false;
+        helpers.clearControls();
     }
 });
-
+Template.cmsinn_controls.helpers({
+    'clear': function(){
+        
+    }
+});
 Template.cmsinn_controls.destroyed = function(){                                                                    // 69
     $('html').removeClass('au-is-active');                                                                               // 70
 };

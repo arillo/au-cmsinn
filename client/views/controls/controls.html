@@ -10,14 +10,6 @@
 <template name="cmsinn_controls">
     <div id="au-sidebar" class="au-sidebar">
         <ul class="au-sidebar_list">
-            {{!-- 
-            <li class="au-sidebar_item">
-                <a herf="#" class="au-sidebar_link js-plugin" data-plugin="disable" title="Disable CMS action">
-                    <i class="au-sidebar_link_icon auicon auicon-off"></i>
-                    <span class="au-sidebar_link_label">Disable</span>
-                </a>
-            </li>
-            --}}
 
             {{!-- editor role --}}
             <li class="au-sidebar_item">
@@ -26,6 +18,13 @@
                     <span class="au-sidebar_link_label">Save</span>
                 </a>
             </li>
+            <li class="au-sidebar_item">
+                <a herf="#" class="au-sidebar_link js-cancel" data-plugin="disable" title="Cancel CMS action">
+                    <i class="au-sidebar_link_icon auicon auicon-off"></i>
+                    <span class="au-sidebar_link_label">Cancel</span>
+                </a>
+            </li>
+
             <li class="au-sidebar_item">
                 <a herf="#" class="au-sidebar_link js-plugin" data-plugin="label" title="Edit text">
                     <i class="au-sidebar_link_icon auicon auicon-edit"></i>
