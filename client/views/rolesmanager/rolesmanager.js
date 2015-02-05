@@ -1,35 +1,39 @@
-var dep, keywords, sortBy, currentPage, perPage, users, totalUsers;
+Template.cmsinn_rolesmanager.created = function(){
+    this.dep = new Deps.Dependency();
+    this.keywords = '';
+    this.sortBy = 'name';
+    this.currentPage = 1;
+    this.perPage = 20;
+    this.users = [];
+    this.totalUsers = 0;
 
-dep = new Deps.Dependency();
-keywords = '';
-sortBy = 'name';
-currentPage = 1;
-perPage = 20;
-users = [];
-totalUsers = 0;
-
-Meteor.subscribe('users');
+    Meteor.subscribe('users', {
+        onReady: _.bind(function(){
+            this.dep.changed();
+        }, this)
+    });
+};
 
 Template.cmsinn_rolesmanager.events({
 
     'keyup .js-cmsinn-rolesmanager-search': function(e, tmpl){
         e.preventDefault();
-        keywords = tmpl.$('.js-cmsinn-rolesmanager-search').val();
-        currentPage = 1;
-        dep.changed();
+        tmpl.keywords = tmpl.$('.js-cmsinn-rolesmanager-search').val();
+        tmpl.currentPage = 1;
+        tmpl.dep.changed();
     },
 
     'click .js-cmsinn-rolesmanager-sort-option': function(e, tmpl){
         e.preventDefault();
-        sortBy = $(e.currentTarget).data('value') || 'name';
-        currentPage = 1;
-        dep.changed();
+        tmpl.sortBy = $(e.currentTarget).data('value') || 'name';
+        tmpl.currentPage = 1;
+        tmpl.dep.changed();
     },
 
     'click .js-cmsinn-rolesmanager-pager': function(e, tmpl){
         e.preventDefault();
-        currentPage = $(e.target).data('value') || 1;
-        dep.changed();
+        tmpl.currentPage = $(e.target).data('value') || 1;
+        tmpl.dep.changed();
     }
 
 });
@@ -37,9 +41,11 @@ Template.cmsinn_rolesmanager.events({
 Template.cmsinn_rolesmanager.helpers({
 
     users: function(){
-        var currentUser, currentUserId, start, end;
+        var tmpl, currentUser, currentUserId, start, end;
 
-        users.length = 0;
+        tmpl = Template.instance();
+
+        tmpl.users.length = 0;
 
         currentUser = Meteor.user();
         currentUserId = currentUser && currentUser._id;
@@ -53,44 +59,50 @@ Template.cmsinn_rolesmanager.helpers({
                 userData.rolesSelectOptions = userSelectOptionsForTemplate(userData, CmsInn.plugins.rolesmanager.roles);
             }
 
-            users.push(userData);
+            tmpl.users.push(userData);
         }, this);
 
-        dep.depend();
+        tmpl.dep.depend();
 
-        users = _.chain(users)
+        tmpl.users = _.chain(tmpl.users)
         .filter(function(user){
             var pattern;
-            pattern = new RegExp(keywords, 'i');
+            pattern = new RegExp(tmpl.keywords, 'i');
             return pattern.test(user.name);
         })
         .sortBy(function(user){
-            return user[sortBy];
+            return user[tmpl.sortBy];
         })
         .value();
 
-        totalUsers = users.length;
+        tmpl.totalUsers = tmpl.users.length;
 
-        start = ((currentPage - 1) * perPage);
-        end = ((currentPage - 1) * perPage) + perPage;
+        start = ((tmpl.currentPage - 1) * tmpl.perPage);
+        end = ((tmpl.currentPage - 1) * tmpl.perPage) + tmpl.perPage;
 
-        return users.slice(start, end);
+        return tmpl.users.slice(start, end);
     },
 
     pages: function(){
-        var totalPages;
+        var tmpl, totalPages;
 
-        totalPages = Math.ceil(users.length / perPage);
+        tmpl = Template.instance();
 
-        dep.depend();
+        totalPages = Math.ceil(tmpl.totalUsers / tmpl.perPage) + 1;
+
+        tmpl.dep.depend();
 
         return _.range(1, totalPages);
     },
 
     isCurrentPage: function(page){
-        dep.depend();
+        var tmpl;
 
-        return currentPage === page;
+        tmpl = Template.instance();
+
+        tmpl.dep.depend();
+
+        return tmpl.currentPage === page;
     }
 
 });
