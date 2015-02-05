@@ -96,23 +96,19 @@
 
 .au-sidebar_info {
   color: white;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
   font-weight: bold;
   font-style: normal;
   text-transform: none;
-  height: 69px;
-  width: 150px;
+  width: 69px;
   position: absolute;
-  bottom: 41px;
-  left: -42px;
+  bottom: 0;
+  left: 0;
   margin: 0;
-  padding: 0;
-  padding-top: 12px;
-  padding-left: 11px;
-  transform: rotate(-90deg);
-  font-family: Monaco, Menlo,monospace;
+  padding: 5px 5px 5px;
   color: #999;
+  font-weight: normal;
 }
 
 /* Sidebar - Links
@@ -200,7 +196,7 @@
 /* Adapt menu for differen heights
 /* -------------------------------------- */
 
-@media all and (max-height: 1000px) {
+@media all and (max-height: 905px) {
   #au-sidebar .au-sidebar_link_icon {
     display: none;
   }
@@ -215,6 +211,16 @@
 
   #au-sidebar .au-sidebar_spacer {
     height: 30px;
+  }
+
+  /* Draft */
+  #au-sidebar .au-sidebar_link-save.draft {
+    color: #0a0;
+  }
+
+  /* Cancel */
+  #au-sidebar .au-sidebar_link-cancel.draft {
+    color: #b00;
   }
 }
 
