@@ -60,9 +60,9 @@ Template.cmsinn_controls.events({
         if(plugin == this.currentPlugin){
             this.currentPlugin = false;
             CmsInn.disable();
-        } else if(plugin != this.currentPlugin){
+        } else {
             el.addClass('current');
-            CmsInn.toggle(plugin);
+            CmsInn.enable(plugin);
             this.currentPlugin = plugin;
         }
     },
@@ -76,18 +76,12 @@ Template.cmsinn_controls.events({
     }
 });
 
-Template['cmsinn_controls'].destroyed = function(){                                                                    // 69
+Template.cmsinn_controls.destroyed = function(){                                                                    // 69
     $('html').removeClass('au-is-active');                                                                               // 70
-    // $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});                                         // 71
-    // $(window).scroll(scroller)                                                                                     // 72
-    // $(window).resize(scroller);                                                                                    // 73
 };
 
-Template['cmsinn_controls'].rendered = function(){
+Template.cmsinn_controls.rendered = function(){
     $('html').addClass('au-is-active');
-    // $('.drager').draggable({cursor: "move", opacity: 0.35, zIndex: 9999});
-    // $(window).scroll(scroller)
-    // $(window).resize(scroller);
 };
 
 Meteor.startup(function(){

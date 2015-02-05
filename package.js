@@ -15,7 +15,7 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12', 'meteorhacks:subs-manager@1.2.2'], ['client', 'server']);
+    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12'], ['client', 'server']);
     api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4'], ['client']);
 
     
