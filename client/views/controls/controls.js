@@ -12,6 +12,8 @@ Template.cmsinn_controls.events({
         el = $(e.currentTarget);
         plugin = el.data('plugin');
 
+        if(el.hasClass('is-disabled')) return;
+
         $('.js-plugin').addClass('is-disabled');
         $('.js-plugin').removeClass('current');
 
