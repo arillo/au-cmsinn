@@ -52,11 +52,11 @@
   list-style: none;
 }
 
-
 #au-sidebar .au-sidebar_item {
   margin: 0;
   padding: 0;
-  position: relative;;
+  position: relative;
+  z-index: 5;
 }
 
 #au-sidebar .au-sidebar_item:before {
@@ -69,6 +69,51 @@
   background: #2f2f2f;
 }
 
+
+/* Sidebar - Spacer
+/* -------------------------------------- */
+
+#au-sidebar .au-sidebar_spacer {
+  height: 50px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#au-sidebar .au-sidebar_spacer:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: #2f2f2f;
+}
+
+
+/* Sidebar - Info
+/* -------------------------------------- */
+
+.au-sidebar_info {
+  color: white;
+  font-size: 10px;
+  line-height: 1.5;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: none;
+  height: 69px;
+  width: 150px;
+  position: absolute;
+  bottom: 41px;
+  left: -42px;
+  margin: 0;
+  padding: 0;
+  padding-top: 12px;
+  padding-left: 11px;
+  transform: rotate(-90deg);
+  font-family: Monaco, Menlo,monospace;
+  color: #999;
+}
 
 /* Sidebar - Links
 /* -------------------------------------- */
@@ -131,18 +176,47 @@
 }
 
 /* Draft */
-#au-sidebar .au-sidebar_link.draft {
+#au-sidebar .au-sidebar_link-save.draft {
   color: white;
   background: #020;
   z-index: 2;
 }
 
-#au-sidebar .draft .au-sidebar_link_icon {
+#au-sidebar .au-sidebar_link-save.draft .au-sidebar_link_icon {
   color: #0a0;
 }
 
+/* Cancel */
+#au-sidebar .au-sidebar_link-cancel.draft {
+  color: white;
+  background: #300;
+  z-index: 2;
+}
 
+#au-sidebar .au-sidebar_link-cancel.draft .au-sidebar_link_icon {
+  color: #a00;
+}
 
+/* Adapt menu for differen heights
+/* -------------------------------------- */
+
+@media all and (max-height: 1000px) {
+  #au-sidebar .au-sidebar_link_icon {
+    display: none;
+  }
+
+  #au-sidebar .au-sidebar_link:hover,
+  #au-sidebar .au-sidebar_link:visited,
+  #au-sidebar .au-sidebar_link:focus,
+  #au-sidebar .au-sidebar_link:link,
+  #au-sidebar .au-sidebar_link {
+    text-align: left;
+  }
+
+  #au-sidebar .au-sidebar_spacer {
+    height: 30px;
+  }
+}
 
 /* ====================================== */
 /* Tooltip
