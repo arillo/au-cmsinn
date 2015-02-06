@@ -6,6 +6,9 @@ var helpers = {
     }
 }
 Template.cmsinn_controls.events({
+    'click .js-logout': function(e,tmpl){
+        Meteor.logout();
+    },
     'click .js-plugin': function(e,tmpl){
         e.preventDefault();
         var el, plugin;
