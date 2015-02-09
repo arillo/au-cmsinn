@@ -1,10 +1,3 @@
-var helpers = {
-    clearControls: function(){
-        CmsInn.disable();
-        $('.js-plugin').removeClass('current is-disabled');
-        $('.js-save,.js-cancel').removeClass('draft');
-    }
-}
 Template.cmsinn_controls.events({
     'click .js-logout': function(e,tmpl){
         Meteor.logout();
@@ -44,17 +37,27 @@ Template.cmsinn_controls.events({
         helpers.clearControls();
     }
 });
+
 Template.cmsinn_controls.helpers({
     'clear': function(){
         
     }
 });
+
 Template.cmsinn_controls.destroyed = function(){                                                                    // 69
     $('html').removeClass('au-is-active');                                                                               // 70
 };
 
 Template.cmsinn_controls.rendered = function(){
     $('html').addClass('au-is-active');
+};
+
+var helpers = {
+    clearControls: function(){
+        CmsInn.disable();
+        $('.js-plugin').removeClass('current is-disabled');
+        $('.js-save,.js-cancel').removeClass('draft');
+    }
 };
 
 Meteor.startup(function(){
