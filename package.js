@@ -16,7 +16,7 @@ Package.on_use(function (api, where) {
     api.imply(['alanning:roles']);
 
     api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12'], ['client', 'server']);
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4'], ['client']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4', 'gfk:notifications@1.1.2'], ['client']);
 
     
     api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
@@ -84,6 +84,9 @@ Package.on_use(function (api, where) {
 
     // New architecture plugins
     api.export('CmsInnLabel', ['client', 'server'], {testOnly: true});
+    api.export('CmsInnLabel', ['client', 'server'], {testOnly: true});
+
+    api.export('Notifications', 'client');
 });
 
 Package.on_test(function (api) {
