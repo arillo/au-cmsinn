@@ -26,6 +26,7 @@ Template.cmsinn_controls.events({
         if(plugin == this.currentPlugin){
             this.currentPlugin = false;
             CmsInn.disable();
+            helpers.clearControls();
         } else {
             el.addClass('current');
             el.removeClass('is-disabled');
