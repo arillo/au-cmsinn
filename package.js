@@ -75,7 +75,7 @@ Package.on_use(function (api, where) {
     api.export('CmsInn');
     api.export('RemoteCollectionStorageAdapter', ['client', 'server'], {testOnly: true});
     api.export('AuCmsInn', ['client', 'server'], {testOnly: true});
-    api.export('Utilities', ['client', 'server'], {testOnly: true});
+    api.export('Utilities', ['client', 'server']);
     api.export('CmsInnSortable', ['client', 'server'], {testOnly: true});
     api.export('CmsInnRecord', ['client', 'server'], {testOnly: true});
     api.export('CmsInnNavigation', ['client', 'server'], {testOnly: true});
