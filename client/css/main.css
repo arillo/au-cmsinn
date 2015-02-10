@@ -557,6 +557,30 @@ select.au-form_input[multiple],
 }
 
 
+/* ====================================== */
+/* Notifications Overwrite
+/* ====================================== */
+
+ul.notifications {
+  width: 300px;
+  top: auto;
+  bottom: 0;
+}
+
+ @media(max-width: 1024px) {
+  ul.notifications {
+    width: 80%;
+  }
+}
+
+li.notification.info {
+  background-color: #2f87d1;
+}
+li.notification.success {
+  background-color: #43c843;
+}
+
+
 
 /* Editable forms
 ======================================*/
