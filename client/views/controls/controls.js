@@ -39,8 +39,8 @@ Template.cmsinn_controls.events({
 });
 
 Template.cmsinn_controls.helpers({
-    'clear': function(){
-        
+    currentLocale: function(){
+        return CmsInn.plugins.label.getLanguage();
     }
 });
 
