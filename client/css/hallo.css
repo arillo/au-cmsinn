@@ -7,7 +7,7 @@
 /* -------------------------------------- */
 
 [contenteditable="true"] {
-  outline: 2px dotted #0d0 !important;
+  outline: 2px dashed #0d0 !important;
   outline-offset: -2px;
   position: relative;
   z-index: 999;

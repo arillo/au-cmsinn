@@ -16,7 +16,7 @@
 
 .image-mark,
 .au-mark {
-  outline: 2px dotted #0d0 !important;
+  outline: 2px dashed #0d0 !important;
   outline-offset: -2px;
   position: relative;
   z-index: 999;
@@ -24,6 +24,14 @@
   min-height: 30px !important;
 }
 
+.au-mark-delete {
+  outline: 2px dashed #f00 !important;
+  outline-offset: -2px;
+  position: relative;
+  z-index: 999;
+  min-width: 30px !important;
+  min-height: 30px !important;
+}
 
 
 /* ====================================== */
