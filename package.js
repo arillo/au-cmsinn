@@ -15,7 +15,7 @@ Package.on_use(function (api, where) {
     api.imply(['iron:router']);
     api.imply(['alanning:roles']);
 
-    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12'], ['client', 'server']);
+    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12','jag:pince'], ['client', 'server']);
     api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4', 'gfk:notifications@1.1.2','mystor:device-detection@0.2.0'], ['client']);
 
     
@@ -25,7 +25,6 @@ Package.on_use(function (api, where) {
     api.add_files('lib/utils.js', ['client', 'server']);
 
     api.add_files('lib/3rd/jquery.poshytip.js', ['client']);
-    api.add_files('assets/trash-icon.png', ['client'], {isAsset: true});
 
     api.add_files('lib/3rd/hallo-enhanced-link.js', ['client']);
 
