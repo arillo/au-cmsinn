@@ -24,20 +24,10 @@ Package.on_use(function (api, where) {
 
     api.add_files('lib/utils.js', ['client', 'server']);
 
-    // api.add_files('lib/3rd/font-awesome.min.css', ['client']);
-    // api.add_files('client/css/font-awesome-override.css', ['client']);
-
     api.add_files('lib/3rd/jquery.poshytip.js', ['client']);
     api.add_files('assets/trash-icon.png', ['client'], {isAsset: true});
-    // api.add_files('assets/webkit-select-black.svg', ['client'], {isAsset: true});
 
-    // api.add_files('lib/3rd/wysiwyg-color.css', ['client']);
-    // api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.css', ['client']);
-
-    // api.add_files('lib/3rd/wysihtml5-0.3.0.js', ['client']);
-    // api.add_files('lib/3rd/bootstrap-wysihtml5-0.0.2.js', ['client']);
-
-    // api.add_files('lib/3rd/wysihtml5.js', ['client']);
+    api.add_files('lib/3rd/hallo-enhanced-link.js', ['client']);
 
     api.add_files('client/views/controls/controls.html', ['client']);
     api.add_files('client/views/controls/controls.js', ['client']);
