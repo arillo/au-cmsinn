@@ -12,90 +12,127 @@ Npm.depends({
 });
 
 Package.on_use(function (api, where) {
-    api.imply(['iron:router']);
-    api.imply(['alanning:roles']);
+    var client, server, both;
 
-    api.use(['underscore@1.0.0', 'ui@1.0.2', 'iron:router@1.0.0', 'tracker@1.0.2', 'templating@1.0.6', 'alanning:roles@1.2.12','jag:pince','mrt:allow-env'], ['client', 'server']);
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2', 'matteodem:hallo@1.0.4', 'gfk:notifications@1.1.2','mystor:device-detection@0.2.0'], ['client']);
+    client = 'client';
+    server = 'server';
+    both = [client, server];
 
+    api.imply([
+        'iron:router',
+        'alanning:roles'
+    ]);
+
+    api.use([
+        'coffeescript',
+        'underscore@1.0.0',
+        'ui@1.0.2',
+        'iron:router@1.0.0',
+        'tracker@1.0.2',
+        'templating@1.0.6',
+        'alanning:roles@1.2.12',
+        'jag:pince',
+        'mrt:allow-env'
+    ], both);
     
-    api.add_files('lib/storage/remote-collection-storage.js', ['client', 'server']);
-    api.add_files('lib/plugins/core.js', ['client', 'server']);
+    api.use([
+        'jquery@1.0.0',
+        'mrt:jquery-ui@1.9.2',
+        'matteodem:hallo@1.0.4',
+        'gfk:notifications@1.1.2',
+        'mystor:device-detection@0.2.0'
+    ], client);
 
-    api.add_files('lib/utils.js', ['client', 'server']);
+    // both
+    api.addFiles([
+        'lib/storage/remote-collection-storage.coffee',
+        'lib/plugins/core.coffee',
+        'lib/utils.coffee',
+        'lib/plugins/ironrouter.coffee',
+        'lib/plugins/image.coffee',
+        'lib/plugins/locale.coffee',
+        'lib/plugins/record.coffee',
+        'lib/plugins/sortable.coffee',
+        'lib/plugins/deletable.coffee',
+        'lib/plugins/navigation.coffee',
+        'lib/plugins/versioning.coffee',
+        'lib/plugins/label.coffee',
+        'lib/plugins/rolesmanager.coffee',
+        'lib/plugins/settings.coffee',
+        'lib/models/content.coffee',
+        'lib/service.coffee'
+    ], both);
 
-    api.add_files('lib/3rd/jquery.poshytip.js', ['client']);
+    // client
 
-    api.add_files('lib/3rd/hallo-enhanced-link.js', ['client']);
+    // styles
+    api.addFiles([
+        'client/css/icons.css',
+        'client/css/main.css',
+        'client/css/hallo.css'
+    ], client);
 
-    api.add_files('client/views/controls/controls.html', ['client']);
-    api.add_files('client/views/controls/controls.js', ['client']);
+    // templates
+    api.addFiles([
+        'client/views/controls/controls.html',
+        'client/views/rolesmanager/rolesmanager.html'
+    ], client);
 
-    api.add_files('client/views/settings/settings.html', ['client']);
+    // code
+    api.addFiles([
+        'lib/3rd/jquery.poshytip.coffee',
+        'lib/3rd/hallo-enhanced-link.coffee',
+        'client/views/controls/controls.coffee',
+        'client/views/rolesmanager/rolesmanager.coffee'
+    ], client);
 
-    api.add_files('client/views/rolesmanager/rolesmanager.html', ['client']);
-    api.add_files('client/views/rolesmanager/rolesmanager.js', ['client']);
 
-    api.add_files('client/css/icons.css', ['client']);
-    api.add_files('client/css/main.css', ['client']);
-    api.add_files('client/css/hallo.css', ['client']);
+    // server
+    api.addFiles([
+        'server/methods/users.coffee',
+        'server/publish/users.coffee'
+    ], server);
 
-    // added iron:router plugin
-    api.add_files('lib/plugins/ironrouter.js', ['client', 'server']);
+    // exports
+    api.export('CmsInn', both);
+    api.export('Notifications', client);
 
-    api.add_files('lib/plugins/image.js', ['client', 'server']);
-    api.add_files('lib/plugins/locale.js', ['client', 'server']);
-    api.add_files('lib/plugins/record.js', ['client', 'server']);
-    api.add_files('lib/plugins/sortable.js', ['client', 'server']);
-    api.add_files('lib/plugins/deletable.js', ['client', 'server']);
-    api.add_files('lib/plugins/navigation.js', ['client', 'server']);
-    api.add_files('lib/plugins/versioning.js', ['client', 'server']);
-    api.add_files('lib/plugins/label.js', ['client', 'server']);
-    api.add_files('lib/plugins/rolesmanager.js', ['client', 'server']);
-    api.add_files('lib/plugins/settings.js', ['client', 'server']);
-
-    api.add_files('lib/models/content.js', ['client', 'server']);
-
-    api.add_files('lib/service.js', ['client', 'server']);
-
-    api.add_files('server/methods/users.js', ['server']);
-    api.add_files('server/publish/users.js', ['server']);
-
-    api.export('CmsInn');
-    api.export('RemoteCollectionStorageAdapter', ['client', 'server'], {testOnly: true});
-    api.export('AuCmsInn', ['client', 'server'], {testOnly: true});
-    api.export('Utilities', ['client', 'server']);
-    api.export('CmsInnSortable', ['client', 'server'], {testOnly: true});
-    api.export('CmsInnRecord', ['client', 'server'], {testOnly: true});
-    api.export('CmsInnNavigation', ['client', 'server'], {testOnly: true});
-    api.export('CmsInnLocale', ['client', 'server'], {testOnly: true});
-    api.export('CmsInnImage', ['client', 'server'], {testOnly: true});
-
-    // New architecture plugins
-    api.export('CmsInnLabel', ['client', 'server'], {testOnly: true});
-    api.export('CmsInnLabel', ['client', 'server'], {testOnly: true});
-
-    api.export('Notifications', 'client');
+    // test
+    api.export('RemoteCollectionStorageAdapter', both, {testOnly: true});
+    api.export('AuCmsInn', both, {testOnly: true});
+    api.export('Utilities', both);
+    api.export('CmsInnSortable', both, {testOnly: true});
+    api.export('CmsInnRecord', both, {testOnly: true});
+    api.export('CmsInnNavigation', both, {testOnly: true});
+    api.export('CmsInnLocale', both, {testOnly: true});
+    api.export('CmsInnImage', both, {testOnly: true});
+    api.export('CmsInnLabel', both, {testOnly: true});
 });
 
 Package.on_test(function (api) {
-    api.use('steelzz:au-cmsinn', ['client', 'server']);
+    var client, server, both;
 
-    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2'], ['client']);
-    api.use(['steelzz:mocha-web-sinon@0.1.6'], ['client', 'server']);
-    api.use('tinytest@1.0.0', ['client', 'server']);
-    api.use('test-helpers@1.0.0', ['client', 'server']);
-    api.use('accounts-base@1.0.0', ['client', 'server']);
-    api.use('accounts-password@1.0.0', ['client', 'server']);
+    client = 'client';
+    server = 'server';
+    both = [client, server];
 
-    api.add_files('test/test_helpers.js', ['client', 'server']);
+    api.use('steelzz:au-cmsinn', both);
 
-    api.add_files('test/lib/service.test.js', ['client', 'server']);
-    api.add_files('test/lib/utils.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/sortable.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/record.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/navigation.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/locale.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/image.test.js', ['client', 'server']);
-    api.add_files('test/lib/plugins/label.test.js', ['client', 'server']);
+    api.use(['jquery@1.0.0', 'mrt:jquery-ui@1.9.2'], client);
+    api.use(['steelzz:mocha-web-sinon@0.1.6'], both);
+    api.use('tinytest@1.0.0', both);
+    api.use('test-helpers@1.0.0', both);
+    api.use('accounts-base@1.0.0', both);
+    api.use('accounts-password@1.0.0', both);
+
+    api.add_files('test/test_helpers.js', both);
+
+    api.add_files('test/lib/service.test.js', both);
+    api.add_files('test/lib/utils.test.js', both);
+    api.add_files('test/lib/plugins/sortable.test.js', both);
+    api.add_files('test/lib/plugins/record.test.js', both);
+    api.add_files('test/lib/plugins/navigation.test.js', both);
+    api.add_files('test/lib/plugins/locale.test.js', both);
+    api.add_files('test/lib/plugins/image.test.js', both);
+    api.add_files('test/lib/plugins/label.test.js', both);
 });
