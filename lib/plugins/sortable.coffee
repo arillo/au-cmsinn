@@ -7,14 +7,10 @@ gPluginName = 'sortable'
 SortablePlugin = (element, options) ->
   @$element = $(element)
   @settings = $.extend({}, options)
-  @storage = null
-  if 'storage' in @settings
-    @storage = @settings.storage
-  if options == 'destroy'
-    @destroy()
-  else
-    @init()
-  return
+
+  @storage = @settings.storage if @settings.storage
+  
+  if options is 'destroy' then @destroy() else @init()
 
 Sortable = ->
   @name = 'sortable'

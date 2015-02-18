@@ -75,7 +75,8 @@ Package.on_use(function (api, where) {
     // templates
     api.addFiles([
         'client/views/controls/controls.html',
-        'client/views/rolesmanager/rolesmanager.html'
+        'client/views/rolesmanager/rolesmanager.html',
+        'client/views/settings/settings.html'
     ], client);
 
     // code
