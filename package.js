@@ -24,7 +24,7 @@ Package.on_use(function (api, where) {
     ]);
 
     api.use([
-        'coffeescript',
+        'coffeescript@1.0.5',
         'underscore@1.0.0',
         'ui@1.0.2',
         'iron:router@1.0.0',

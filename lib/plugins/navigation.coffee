@@ -109,10 +109,28 @@ NavigationUI =
   render: (id, fieldId, recordId, storage, element) ->
     #selectedTemplate, uri, pageTypes
     @init id, fieldId, recordId, storage, element
+    
     sortedPageTypes = _.sortBy(CmsInnNavigation.pageTypes, (pageType) ->
       pageType.type
     )
-    tpl = '             <div class="au-form au-form-nav">                 <div class="au-form_item">                     <select class="au-form_input au-form_input-select js-cmsinn-nav-page-type">                         <option value="">None</option>                         ' + @buildOptions(sortedPageTypes, @currentRecord.get('template')) + '                     </select>                 </div>                 <div class="au-form_item">                     <label class="au-form_label">URL</label>                     <input type="text" class="au-form_input au-form_input-text js-cmsinn-nav-item-uri" value="' + @currentRecord.get('uri') + '">                 </div>                 <div class="au-form_item au-tip_item-actions">                     <div class="au-form_actions">                         <button class="au-form_btn js-save-nav">Save</button>                         <button class="au-form_btn js-close-nav">Close</button>                     </div>                 </div>             </div>         '
+    tpl = '<div class="au-form au-form-nav">
+            <div class="au-form_item">
+              <select class="au-form_input au-form_input-select js-cmsinn-nav-page-type">
+                <option value="">None</option>' + 
+                @buildOptions(sortedPageTypes, @currentRecord.get('template')) +
+              '</select>
+            </div>
+            <div class="au-form_item">
+              <label class="au-form_label">URL</label>
+              <input type="text" class="au-form_input au-form_input-text js-cmsinn-nav-item-uri" value="' + @currentRecord.get('uri') + '">
+            </div>
+            <div class="au-form_item au-tip_item-actions">
+              <div class="au-form_actions">
+                <button class="au-form_btn js-save-nav">Save</button>
+                <button class="au-form_btn js-close-nav">Close</button>
+              </div>
+            </div>
+          </div>'
     tpl
 
 ###*
@@ -130,15 +148,11 @@ contentDep = new (Deps.Dependency)
 NavigationPlugin = (element, options) ->
   @$element = $(element)
   @settings = $.extend({}, options)
-  if 'storage' in @settings
-    @storage = @settings.storage
-  if 'ui' in @settings and typeof @settings.ui == 'object'
-    @ui = @settings.ui
-  if 'destroy' in options and options['destroy']
-    @destroy()
-  else
-    @init()
-  return
+
+  @storage = @settings.storage if @settings.storage
+  @ui = @settings.ui if @settings.ui and typeof @settings.ui == 'object'
+
+  if options.destroy then @destroy() else @init()
 
 Navigation = ->
   @name = 'navigation'
@@ -173,7 +187,7 @@ Navigation::enable = ->
 
 Navigation::config = (options) ->
   PluginBase::config.call this, gPluginName
-  if 'pageTypes' in options
+  if options.pageTypes
     self = this
     _.each options.pageTypes, (type) ->
       if _.where(self.pageTypes, type).length == 0
@@ -181,7 +195,7 @@ Navigation::config = (options) ->
       else
         throw new (Meteor.Error)('Page type with such name [' + type.type + '] already exists!')
       return
-  if 'defaultTemplate' in options
+  if options.defaultTemplate
     @defaultTemplate = options.defaultTemplate
   return
 
@@ -335,7 +349,9 @@ NavigationPlugin::destroy = ->
 NavigationPlugin::init = ->
   self = this
   @$element.addClass 'au-mark'
-  @$element.on 'click', ->
+  @$element.on 'click', (e)->
+    e.preventDefault()
+
     # Destroy other poshytips
     $('[data-au-nav]').each ->
       if this != self.$element

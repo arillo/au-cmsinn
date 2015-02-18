@@ -47,15 +47,11 @@ gPluginName = 'locale'
 LocalePlugin = (element, options) ->
   @$element = $(element)
   @settings = $.extend({}, options)
-  if 'storage' in @settings
-    @storage = @settings.storage
-  if 'ui' in @settings and typeof @settings.ui == 'object'
-    @ui = @settings.ui
-  if 'destroy' in options and options['destroy']
-    @destroy()
-  else
-    @init()
-  return
+
+  @storage = @settings.storage if @settings.storage
+  @ui = @settings.ui if @settings.ui and typeof @settings.ui == 'object'
+
+  if options.destroy then @destroy() else @init()
 
 Locale = ->
   @name = 'locale'

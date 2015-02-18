@@ -93,21 +93,23 @@ LabelPlugin::enable = ->
     e.stopPropagation()
     elemHalloPluginNames = []
     elemHalloPlugins = $(e.currentTarget).data('hallo-plugins')
+
     $halloToolbar = $('.hallotoolbar')
-    if elemHalloPlugins != null
-      if elemHalloPlugins == 'all'
+
+    if elemHalloPlugins?
+      if elemHalloPlugins is 'all'
         elemHalloPluginNames = halloPluginNames
       else
-        elemHalloPluginNames = _.filter(elemHalloPlugins.split(','), (item) ->
-          ! !item
-        )
-        if !elemHalloPluginNames.length
-          elemHalloPluginNames = []
+        elemHalloPluginNames = _.filter elemHalloPlugins.split(','), (item) -> !!item
+        elemHalloPluginNames = [] if not elemHalloPluginNames.length
+
     pluginsToShow = _.intersection(halloPluginNames, elemHalloPluginNames)
     pluginsToHide = _.difference(halloPluginNames, elemHalloPluginNames)
+
     _.each pluginsToShow, (plugin) ->
       $halloToolbar.find('.' + plugin).show()
       return
+
     _.each pluginsToHide, (plugin) ->
       $halloToolbar.find('.' + plugin).hide()
       return
