@@ -26,8 +26,6 @@
 #}
 # ----------------------------------- Label Plugin UI bit --------------------------------------//
 # ----------------------------------- Label Plugin bit --------------------------------------//
-window.$ = jQuery
-
 gPluginName = 'label'
 gLabelName = 'label'
 gContentType = 'label'
@@ -56,7 +54,7 @@ LabelPlugin::init = ->
   PluginBase::init.call this, gPluginName
   return
 
-LabelPlugin::disable = ($) ->
+LabelPlugin::disable = ->
   PluginBase::disable.call this, gPluginName
   $(@selector).hallo editable: false
   $('.hallolink-dialog').off().remove()
@@ -77,7 +75,7 @@ LabelPlugin::disable = ($) ->
   ), this)
   return
 
-LabelPlugin::enable = ($) ->
+LabelPlugin::enable = ->
   PluginBase::enable.call this, gPluginName
   self = this
   halloPlugins = 
