@@ -72,6 +72,17 @@ Package.on_use(function (api, where) {
         'client/css/hallo.css'
     ], client);
 
+    // helpers
+    api.addFiles([
+        'client/helpers/load_plugin.coffee'
+    ], client);
+
+    // record
+    api.addFiles([
+        'client/views/record/record.html',
+        'client/views/record/record.coffee'
+    ], client);
+
     // templates
     api.addFiles([
         'client/views/controls/controls.html',
@@ -86,7 +97,6 @@ Package.on_use(function (api, where) {
         'client/views/controls/controls.coffee',
         'client/views/rolesmanager/rolesmanager.coffee'
     ], client);
-
 
     // server
     api.addFiles([

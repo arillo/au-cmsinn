@@ -2,6 +2,7 @@
 # Default UI
 ###
 
+
 RecordUI = 
   storage: null
   element: null
@@ -59,33 +60,23 @@ RecordUI =
     options
   render: (element, placeId, fieldId, recordId, storage) ->
     @init storage, element
-    # var addNewItemTpl = ' \
-    #     <div class="au-form au-form-nav '+placeId+'"> \
-    #         <div class="au-form_item"> \
-    #             <select data-record-id="'+recordId+'" data-field-id="'+fieldId+'" data-id="'+placeId+'" class="au-form_input au-form_input-select js-cmsinn-selected-record"> \
-    #                 <option value="none">Record to be displayed here</option> \
-    #                 '+this.buildOptions(1, [])+' \
-    #             </select> \
-    #         </div> \
-    #         <div class="au-form_item au-tip_item-actions"> \
-    #             <div class="au-form_actions"> \
-    #                 <button type="button" class="au-form_btn js-cmsinn-add-new-record" data-record-id="'+recordId+'" data-field-id="'+fieldId+'" data-id="'+placeId+'">Add new record</button> \
-    #             </div> \
-    #         </div> \
-    #         <div class="au-form_item"> \
-    #             <select data-record-id="'+recordId+'" data-field-id="'+fieldId+'" data-id="'+placeId+'" class="au-form_input au-form_input-select js-cmsinn-selected-parent-record"> \
-    #                 <option value="none">Record for which you need to create sub record</option> \
-    #                 '+this.buildOptions(1, [])+' \
-    #             </select> \
-    #         </div> \
-    #         <div class="au-form_item au-tip_item-actions"> \
-    #             <div class="au-form_actions"> \
-    #                 <button type="button" class="au-form_btn js-close-record" data-id="'+placeId+'">Close</button> \
-    #             </div> \
-    #         </div> \
-    #     </div> \
-    # ';
-    addNewItemTpl = '             <div class="au-form au-form-nav ' + placeId + '">                 <div class="au-form_item au-tip_item-actions">                     <div class="au-form_actions">                         <button type="button" class="au-form_btn js-cmsinn-add-new-record" data-record-id="' + recordId + '" data-field-id="' + fieldId + '" data-id="' + placeId + '">Add new record</button>                     </div>                 </div>                 <div class="au-form_item au-tip_item-actions">                     <div class="au-form_actions">                         <button type="button" class="au-form_btn js-close-record" data-id="' + placeId + '">Close</button>                     </div>                 </div>             </div>         '
+    
+    console.log placeId, fieldId, recordId
+
+    addNewItemTpl = '
+      <div class="au-form au-form-nav ' + placeId + '">
+        <div class="au-form_item au-tip_item-actions">
+          <div class="au-form_actions">
+            <button type="button" class="au-form_btn js-cmsinn-add-new-record" data-record-id="' + recordId + '" data-field-id="' + fieldId + '" data-id="' + placeId + '">Add new record</button>
+          </div>
+        </div>
+        <div class="au-form_item au-tip_item-actions">
+          <div class="au-form_actions">
+            <button type="button" class="au-form_btn js-close-record" data-id="' + placeId + '">Close</button>
+          </div>
+        </div>
+      </div>'
+    
     addNewItemTpl
 
 ###*
@@ -95,20 +86,6 @@ RecordUI =
 
 gPluginName = 'record'
 contentDep = new (Deps.Dependency)
-
-###*
-# jQuery plugin
-###
-
-RecordPlugin = (element, options) ->
-  @$element = $(element)
-  @settings = $.extend({}, options)
-
-  @storage = @settings.storage if @settings.storage
-  @ui = @settings.ui if @settings.ui and typeof @settings.ui == 'object'
-
-  if options.destroy then @destroy() else @init()
-
 
 Record = ->
   @name = 'record'
@@ -126,18 +103,22 @@ Record::init = ->
 
 Record::disable = ->
   PluginBase::disable.call this, gPluginName
+  
   $('[data-au-record]').cmsInnRecord
     destroy: true
     storage: @storage
     ui: @ui
-  return
+  
+  Session.set 'cms_active_plugin', null
 
 Record::enable = ->
   PluginBase::enable.call this, gPluginName
+  
   $('[data-au-record]').cmsInnRecord
     storage: @storage
     ui: @ui
-  return
+  
+  Session.set 'cms_active_plugin', gPluginName
 
 Record::config = (options) ->
   PluginBase::config.call this, gPluginName
@@ -245,6 +226,19 @@ Record::mapRecord = (placeId, recordId, fieldId, parentRecordId) ->
 
 CmsInnRecord = new Record
 
+###*
+# jQuery plugin
+###
+
+RecordPlugin = (element, options) ->
+  @$element = $(element)
+  @settings = $.extend({}, options)
+
+  @storage = @settings.storage if @settings.storage
+  @ui = @settings.ui if @settings.ui and typeof @settings.ui == 'object'
+
+  if options.destroy then @destroy() else @init()
+
 RecordPlugin::destroy = ->
   @$element.removeClass 'empty-record'
   @$element.removeClass 'au-mark'
@@ -288,50 +282,50 @@ if Meteor.isClient
       self = this
       @each ->
         $.data this, 'cmsInnRecord', new RecordPlugin(this, options)
-        return
 
-    return
   ) jQuery
-  if UI
-    UI.registerHelper 'recordByPlace', (prefix, placeId) ->
-      contentDep.depend()
-      prefix = if _.isNull(prefix) or _.isUndefined(prefix) then '' else prefix
-      place = Utilities.normalizePrefix(prefix) + placeId
-      CmsInnRecord.queryOne places: $in: [ place ]
-    UI.registerHelper 'sorted', (items, parent, limit) ->
-      contentDep.depend()
-      items = if items == undefined then [] else items
-      CmsInnRecord.query { _id: $in: items }, limit, parent
-    #@todo: still not happy with this filter implementation
-    UI.registerHelper 'paging', (prefix, placeId, limit) ->
-      contentDep.depend()
-      result = []
-      prefix = if _.isNull(prefix) or _.isUndefined(prefix) then '' else prefix
-      place = Utilities.normalizePrefix(prefix) + placeId
-      parsedAttribute = Utilities.parseAttr(place)
-      field = 'children'
-      if parsedAttribute['fieldId'] != null
-        field = parsedAttribute['fieldId']
-      parent = CmsInnRecord.queryOne(places: $in: [ place ])
-      if parent != undefined
-        CmsInnRecord.filters[parent._id].limit = limit
-        items = 0
-        if field in parent and parent[field].length > 0
-          items = parent[field].length
-        pages = Math.ceil(items / limit)
-        active = ''
-        page = 0
-        if CmsInnRecord.filters[parent._id].skip > 0
-          page = CmsInnRecord.filters[parent._id].skip / CmsInnRecord.filters[parent._id].limit
-        if pages > 1
-          i = 0
-          while i < pages
-            active = if page == i then 'active' else ''
-            result.push
-              current: i + 1
-              skip: limit * i
-              limit: limit
-              isActive: active
-              forRecord: parent._id
-            i++
-      result
+
+  UI.registerHelper 'recordByPlace', (prefix, placeId) ->
+    contentDep.depend()
+    prefix = if _.isNull(prefix) or _.isUndefined(prefix) then '' else prefix
+    place = Utilities.normalizePrefix(prefix) + placeId
+    CmsInnRecord.queryOne places: $in: [ place ]
+
+  UI.registerHelper 'sorted', (items, parent, limit) ->
+    contentDep.depend()
+    items = if items == undefined then [] else items
+    CmsInnRecord.query { _id: $in: items }, limit, parent
+
+  #@todo: still not happy with this filter implementation
+  UI.registerHelper 'paging', (prefix, placeId, limit) ->
+    contentDep.depend()
+    result = []
+    prefix = if _.isNull(prefix) or _.isUndefined(prefix) then '' else prefix
+    place = Utilities.normalizePrefix(prefix) + placeId
+    parsedAttribute = Utilities.parseAttr(place)
+    field = 'children'
+    if parsedAttribute['fieldId'] != null
+      field = parsedAttribute['fieldId']
+    parent = CmsInnRecord.queryOne(places: $in: [ place ])
+    if parent != undefined
+      CmsInnRecord.filters[parent._id].limit = limit
+      items = 0
+      if field in parent and parent[field].length > 0
+        items = parent[field].length
+      pages = Math.ceil(items / limit)
+      active = ''
+      page = 0
+      if CmsInnRecord.filters[parent._id].skip > 0
+        page = CmsInnRecord.filters[parent._id].skip / CmsInnRecord.filters[parent._id].limit
+      if pages > 1
+        i = 0
+        while i < pages
+          active = if page == i then 'active' else ''
+          result.push
+            current: i + 1
+            skip: limit * i
+            limit: limit
+            isActive: active
+            forRecord: parent._id
+          i++
+    result

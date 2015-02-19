@@ -225,4 +225,5 @@ CmsInn = new AuCmsInn({
   rolesmanager: CmsInnRolesManager
   settings: CmsInnSettings
 }, jQuery)
+
 Log.debug CmsInn
