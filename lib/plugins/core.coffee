@@ -30,8 +30,10 @@ PluginBase::setStorage = (storage) ->
 PluginBase::init = (pluginName) ->
 
 PluginBase::enable = (pluginName) ->
+	Session.set 'cms_active_plugin', pluginName
 
 PluginBase::disable = (pluginName) ->
+	Session.set 'cms_active_plugin', null
 
 PluginBase::config = (pluginName) ->
 

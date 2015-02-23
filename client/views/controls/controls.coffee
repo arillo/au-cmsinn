@@ -27,6 +27,7 @@ Template.cmsinn_controls.events
   'click .js-save': (e, tmpl) ->
     CmsInn.plugins.versioning.enable()
     @currentPlugin = false
+    CmsInn.save()
     helpers.clearControls()
     return
   'click .js-cancel': (e, tmpl) ->

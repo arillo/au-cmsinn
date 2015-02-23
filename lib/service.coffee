@@ -209,6 +209,12 @@ AuCmsInn::disable = ->
     @currentPlugin = null
   return
 
+AuCmsInn::save = ->
+  if @currentPlugin and _.isFunction(@currentPlugin.save)
+    @currentPlugin.save()
+
+  return
+
 ###*
 # Initialiaze
 ###

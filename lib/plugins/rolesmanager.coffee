@@ -15,13 +15,12 @@ RolesManager::init = ->
 
 RolesManager::enable = ->
   PluginBase::enable.call this, gPluginName
-  @view = UI.render(Template.cmsinn_rolesmanager, document.body)
-  @$el = $('.js-cmsinn-rolesmanager')
+  @view = UI.render(Template.cms_rolesmanager, document.body)
+  @$el = $('.js-cms_rolesmanager')
   return
 
 RolesManager::disable = ->
   PluginBase::disable.call this, gPluginName
-  @save()
   if @view != null
     UI.remove @view
   return
@@ -32,7 +31,7 @@ RolesManager::config = (options) ->
 
 RolesManager::save = ->
   $roles = undefined
-  $roles = @$el.find('.js-cmsinn-rolesmanager-role')
+  $roles = @$el.find('.js-cms_rolesmanager-role')
   $roles.each ->
     $el = undefined
     value = undefined

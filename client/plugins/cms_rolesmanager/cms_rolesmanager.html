@@ -1,5 +1,5 @@
-<template name="cmsinn_rolesmanager">
-<div class="au-modal js-cmsinn-rolesmanager">
+<template name="cms_rolesmanager">
+<div class="au-modal js-cms_rolesmanager">
     <div class="au-modal_overlay"></div>
 
     <div class="au-modal_content">
@@ -7,14 +7,14 @@
             <h2 class="au-form_title">Roles Manager</h2>
 
             <div class="au-form_item au-form_item-large">
-                <input class="au-form_input js-cmsinn-rolesmanager-search" type="text" placeholder="Search">
+                <input class="au-form_input js-cms_rolesmanager-search" type="text" placeholder="Search">
             </div>
 
             <table class="au-form_table">
                 <thead>
                     <tr>
-                        <th class="js-cmsinn-rolesmanager-sort-option" data-value="name" style="cursor: pointer;">Name</th>
-                        <th class="js-cmsinn-rolesmanager-sort-option" data-value="role" style="cursor: pointer;">Role</th>
+                        <th class="js-cms_rolesmanager-sort-option" data-value="name" style="cursor: pointer;">Name</th>
+                        <th class="js-cms_rolesmanager-sort-option" data-value="role" style="cursor: pointer;">Role</th>
                     </tr>
                 </thead>
             {{#each users}}
@@ -22,7 +22,7 @@
                     <td>{{name}}</td>
                     <td>
                         {{#if rolesSelectOptions}}
-                        <select class="au-form_input au-form_input-select js-cmsinn-rolesmanager-role" data-userid="{{_id}}">
+                        <select class="au-form_input au-form_input-select js-cms_rolesmanager-role" data-userid="{{_id}}">
                         {{#each rolesSelectOptions}}
                             <option value="{{value}}" {{selected}}>{{value}}</option>
                         {{/each}}
@@ -34,7 +34,7 @@
                 </tr>
             {{/each}}
             </table>
-            <ul class="au-pagination js-cmsinn-rolesmanager-pager">
+            <ul class="au-pagination js-cms_rolesmanager-pager">
                 {{#each pages}}
                     {{#if isCurrentPage this}}
                     <li class="au-pagination_item au-pagination_item-selected" data-value="{{this}}">{{this}}</li>

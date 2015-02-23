@@ -77,25 +77,35 @@ Package.on_use(function (api, where) {
         'client/helpers/load_plugin.coffee'
     ], client);
 
-    // record
+    // CMS plugins
+
+    // record plugin
     api.addFiles([
-        'client/views/record/record.html',
-        'client/views/record/record.coffee'
+        'client/plugins/cms_record/cms_record.html',
+        'client/plugins/cms_record/cms_record.coffee'
     ], client);
 
-    // templates
+    // rolesmanager plugin
+    api.addFiles([
+        'client/plugins/cms_rolesmanager/cms_rolesmanager.html',
+        'client/plugins/cms_rolesmanager/cms_rolesmanager.coffee'
+    ], client);
+
+    // settings plugin
+    api.addFiles([
+        'client/plugins/cms_settings/cms_settings.html'
+    ], client);
+
+    // controls bar
     api.addFiles([
         'client/views/controls/controls.html',
-        'client/views/rolesmanager/rolesmanager.html',
-        'client/views/settings/settings.html'
+        'client/views/controls/controls.coffee'
     ], client);
 
-    // code
+    // 3rd party
     api.addFiles([
         'lib/3rd/jquery.poshytip.coffee',
-        'lib/3rd/hallo-enhanced-link.coffee',
-        'client/views/controls/controls.coffee',
-        'client/views/rolesmanager/rolesmanager.coffee'
+        'lib/3rd/hallo-enhanced-link.coffee'
     ], client);
 
     // server

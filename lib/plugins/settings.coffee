@@ -10,13 +10,12 @@ Settings::init = ->
 
 Settings::enable = ->
   PluginBase::enable.call this, gPluginName
-  @view = UI.renderWithData(Template.cmsinn_settings, { fields: @fields }, document.body)
-  @$el = $('.js-cmsinn-settings')
+  @view = UI.renderWithData(Template.cms_settings, { fields: @fields }, document.body)
+  @$el = $('.js-cms_settings')
   return
 
 Settings::disable = ->
   PluginBase::disable.call this, gPluginName
-  @save()
   if @view != null
     UI.remove @view
   return
@@ -30,7 +29,7 @@ Settings::save = ->
   $fields = undefined
   data = undefined
   recordid = undefined
-  $fields = @$el.find('.js-cmsinn-settings-field')
+  $fields = @$el.find('.js-cms_settings-field')
   data = {}
   recordid = 'website_settings'
   $fields.each ->
