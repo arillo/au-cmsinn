@@ -64,18 +64,6 @@ Locale = ->
       locale: 'en_US'
       title: 'en_US'
     }
-    {
-      locale: 'lt_LT'
-      title: 'lt_LT'
-    }
-    {
-      locale: 'ru_RU'
-      title: 'ru_RU'
-    }
-    {
-      locale: 'de_DE'
-      title: 'de_DE'
-    }
   ]
   return
 
@@ -102,13 +90,12 @@ Locale::enable = ->
 
 Locale::config = (options) ->
   PluginBase::config.call this, gPluginName
-  if 'locales' in options
-    self = this
-    _.each options.locales, (locale) ->
-      if _.where(self.allLanguages, locale).length == 0
-        self.allLanguages.push locale
-      return
-  return
+
+  if options and _.isArray(options.locales) and not _.isEmpty(options.locales)
+    @allLanguages = []
+
+    _.each options.locales, (locale) =>
+      @allLanguages.push(locale) if _.isEmpty(_.where(@allLanguages, locale))
 
 Locale::get = (id) ->
   result = @storage.collection.findOne(_id: id)
