@@ -5,7 +5,7 @@ hooks =
     return
   'beforeUpdate': (selector, modifier, options) ->
     if CmsInnVersioning.publishCall == false
-      if '$addToSet' in modifier == false and '$pull' in modifier == false
+      if not modifier.$addToSet? and not modifier.$pull?
         current = modifier['$set']
         modifier['$push'] = 'draft.__statement__': JSON.stringify(modifier)
         modifier['$set'] = {}
@@ -31,6 +31,7 @@ hooks =
       delete query['isDraft']
       delete options.fields.draft
     return
+
 gPluginName = 'versioning'
 
 Version = ->

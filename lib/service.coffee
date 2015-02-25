@@ -94,11 +94,11 @@ AuCmsInn::configure = (options) ->
   # Each plugin can define hooks and those will be loaded here
   _.each self.plugins, (options, item) ->
     if typeof self.plugins[item].hooks == 'object'
-      if 'beforeInsert' in self.plugins[item].hooks
+      if self.plugins[item].hooks.beforeInsert
         self.storage.beforeInsert self.plugins[item].hooks['beforeInsert']
-      if 'beforeUpdate' in self.plugins[item].hooks
+      if self.plugins[item].hooks.beforeUpdate
         self.storage.beforeUpdate self.plugins[item].hooks['beforeUpdate']
-      if 'beforePublish' in self.plugins[item].hooks
+      if self.plugins[item].hooks.beforePublish
         self.storage.beforePublish self.plugins[item].hooks['beforePublish']
     return
   # Log.debug('Router.configure', this.options);
