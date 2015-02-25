@@ -211,7 +211,7 @@ Image::getSizedAvailable = (imageId, size) ->
         _g = _.pick(item, 'get')
         _.extend img, _g
   # console.log(img);
-  if _.isObject(img) and _.has(img.get('sizes_available'), size)
+  if _.isObject(img) and _.isObject(img.sizes_available) and _.has(img.get('sizes_available'), size)
     return true
   false
 
