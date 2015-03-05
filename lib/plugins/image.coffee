@@ -127,22 +127,22 @@ gPluginName = 'image'
 
 Image = ->
   @name = 'image'
-  @hooks = beforePublish: (query, options, userId) ->
-    if !options['fields']
-      options['fields'] = {}
-    # @FIX, don't send imageData over the wire, any type
-    if Utilities.isEditor(userId)
-      options.fields['image.imageData'] = 0
-      options.fields['image2.imageData'] = 0
-      options.fields['image_xl.imageData'] = 0
-    else
-      options.fields['image.imageData'] = 0
-      options.fields['image.sizes'] = 0
-      options.fields['image2.imageData'] = 0
-      options.fields['image2.sizes'] = 0
-      options.fields['image_xl.imageData'] = 0
-      options.fields['image_xl.sizes'] = 0
-    return
+  @hooks = 
+    beforePublish: (query, options, userId) ->
+      options['fields'] = {} if !options['fields']
+      # @FIX, don't send imageData over the wire, any type
+      if Utilities.isEditor(userId)
+        options.fields['image.imageData'] = 0
+        options.fields['image2.imageData'] = 0
+        options.fields['image_xl.imageData'] = 0
+      else
+        options.fields['image.imageData'] = 0
+        options.fields['image.sizes'] = 0
+        options.fields['image2.imageData'] = 0
+        options.fields['image2.sizes'] = 0
+        options.fields['image_xl.imageData'] = 0
+        options.fields['image_xl.sizes'] = 0
+      return
   @storage = null
   @contentType = 'image'
   return
@@ -211,7 +211,7 @@ Image::getSizedAvailable = (imageId, size) ->
         _g = _.pick(item, 'get')
         _.extend img, _g
   # console.log(img);
-  if _.isObject(img) and _.has(img.get('sizes_available'), size)
+  if _.isObject(img) and _.isObject(img.sizes_available) and _.has(img.get('sizes_available'), size)
     return true
   false
 
