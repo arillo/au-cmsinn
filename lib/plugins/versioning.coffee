@@ -84,9 +84,9 @@ Version::publishAll = ->
 
 Version::config = (options) ->
   self = this
-  if 'adminRoles' in options
+  if options and options.adminRoles
     self.adminRoles = options.adminRoles
-  # if('insecure' in options){
+  # if(options.insecure){
   #     self.insecure = true;
   # }
   return

@@ -141,19 +141,19 @@ Record::enable = ->
 
 Record::config = (options) ->
   PluginBase::config.call this, gPluginName
-  if 'ui' in options and options.ui != null
+  if options and options.ui?
     @ui = options.ui
   return
 
 Record::setFilter = (options) ->
   filter = JSON.parse(options)
-  if 'record' in filter
+  if filter and filter.record?
     @filters[filter['record']] = _.extend({ sort: sortOrder: 1 }, filter)
   contentDep.changed()
   return
 
 Record::initFilter = (recordId, limit) ->
-  if !(recordId in @filters)
+  if !(@filters.recordId?)
     @filters[recordId] =
       sort: sortOrder: 1
       skip: 0
@@ -316,7 +316,7 @@ if Meteor.isClient
       if parent != undefined
         CmsInnRecord.filters[parent._id].limit = limit
         items = 0
-        if field in parent and parent[field].length > 0
+        if parent.field? and parent[field].length > 0
           items = parent[field].length
         pages = Math.ceil(items / limit)
         active = ''

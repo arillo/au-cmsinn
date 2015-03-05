@@ -102,7 +102,7 @@ Locale::enable = ->
 
 Locale::config = (options) ->
   PluginBase::config.call this, gPluginName
-  if 'locales' in options
+  if options and options.locales
     self = this
     _.each options.locales, (locale) ->
       if _.where(self.allLanguages, locale).length == 0

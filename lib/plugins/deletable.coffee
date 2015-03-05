@@ -53,7 +53,7 @@ Deletable::enable = ->
 
 Deletable::config = (options) ->
   PluginBase::config.call this, gPluginName
-  # if('trash' in options){
+  # if(options and options.trash){
   #     if(typeof options.trash === 'function'){
   #         this.trash = options.trash();
   #     } else if(typeof options.trash === 'string'){

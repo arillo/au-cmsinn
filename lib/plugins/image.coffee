@@ -5,11 +5,11 @@
 ImagePlugin = (element, options) ->
   @$element = $(element)
   @settings = $.extend({}, options)
-  if 'storage' in @settings
+  if @settings.storage?
     @storage = @settings.storage
-  if 'ui' in @settings and typeof @settings.ui == 'object'
+  if @settings.ui? and typeof @settings.ui == 'object'
     @ui = @settings.ui
-  if 'destroy' in options and options['destroy']
+  if options.destroy?
     @destroy()
   else
     @init()
