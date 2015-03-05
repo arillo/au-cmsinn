@@ -97,6 +97,8 @@ Locale::config = (options) ->
     _.each options.locales, (locale) =>
       @allLanguages.push(locale) if _.isEmpty(_.where(@allLanguages, locale))
 
+  return
+
 Locale::get = (id) ->
   result = @storage.collection.findOne(_id: id)
   if result
