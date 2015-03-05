@@ -250,7 +250,7 @@ RecordPlugin::destroy = ->
   @$element.removeClass 'au-mark'
   # this.$element.editable('destroy');
   @$element.poshytip 'destroy'
-  @$element.off 'click'
+  @$element.off 'click.record'
   @ui.destroy()
   # this.$element.off('shown.bs.poshytip');
   return
@@ -260,7 +260,7 @@ RecordPlugin::init = ->
   if @$element.height() == 0
     @$element.addClass 'empty-record'
   @$element.addClass 'au-mark'
-  @$element.on 'click', (e) ->
+  @$element.on 'click.record', (e) ->
     e.stopPropagation()
     # Destroy other poshytips
     $('[data-au-record]').each ->
