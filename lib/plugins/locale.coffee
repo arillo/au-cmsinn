@@ -59,18 +59,12 @@ Locale = ->
   @ui = LocaleUI
   @contentType = 'locale'
   @defaultLocale = 'en_US'
+
+  # default languages
   @allLanguages = [
     {
       locale: 'en_US'
       title: 'en_US'
-    }
-    {
-      locale: 'lt_LT'
-      title: 'lt_LT'
-    }
-    {
-      locale: 'ru_RU'
-      title: 'ru_RU'
     }
     {
       locale: 'de_DE'
@@ -102,12 +96,13 @@ Locale::enable = ->
 
 Locale::config = (options) ->
   PluginBase::config.call this, gPluginName
-  if options and options.locales
-    self = this
-    _.each options.locales, (locale) ->
-      if _.where(self.allLanguages, locale).length == 0
-        self.allLanguages.push locale
-      return
+
+  if options and _.isArray(options.locales) and not _.isEmpty(options.locales)
+    @allLanguages = []
+
+    _.each options.locales, (locale) =>
+      @allLanguages.push(locale) if _.isEmpty(_.where(@allLanguages, locale))
+
   return
 
 Locale::get = (id) ->
