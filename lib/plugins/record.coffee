@@ -298,10 +298,21 @@ if Meteor.isClient
       prefix = if _.isNull(prefix) or _.isUndefined(prefix) then '' else prefix
       place = Utilities.normalizePrefix(prefix) + placeId
       CmsInnRecord.queryOne places: $in: [ place ]
+    
     UI.registerHelper 'sorted', (items, parent, limit) ->
       contentDep.depend()
       items = if items == undefined then [] else items
       CmsInnRecord.query { _id: $in: items }, limit, parent
+    
+    UI.registerHelper 'sortedIndex', (items, parent, limit) ->
+      contentDep.depend()
+      items = if items == undefined then [] else items
+      items = CmsInnRecord.query { _id: $in: items }, limit, parent
+      items.map (item, index) ->
+        item._index = index + 1
+        item
+      
+
     #@todo: still not happy with this filter implementation
     UI.registerHelper 'paging', (prefix, placeId, limit) ->
       contentDep.depend()
