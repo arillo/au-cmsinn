@@ -3,4 +3,4 @@ Meteor.setTimeout ->
 , 1000
 
 UI.registerHelper 'loadPlugin', (options)->
-    options.hash.pluginName is Session.get('cms_active_plugin')
+    Utilities.isEditor(Meteor.userId()) and options.hash.pluginName is Session.get('cms_active_plugin')
