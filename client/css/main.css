@@ -589,178 +589,69 @@ li.notification.success {
 }
 
 
+/* ====================================== */
+/* Add Records
+/* ====================================== */
 
-/* Editable forms
-======================================*/
-
-/*.editable-container {
-  margin-bottom: 5px;
-}*/
-
-/* Inline */
-/*.editable-input textarea,
-.editable-input input[type="text"] {
-  margin-bottom: 0;
-  min-width: 200px;
+.au-add-record {
+  background: #e5e5e5;
+  text-align: center;
+  padding: 10px;
 }
 
-.editable-input textarea {
-  min-width: 280px;
-}
-
-.editable-buttons .btn{
-  background-image: none;
-}*/
-
-/* wysihtml5 */
-/*.dropdown-menu li a,
-.editable-wysihtml5 {
-  color:#222 !important;
-}
-
-.wysihtml5-sandbox {
-  border: 0 !important;
-  width: 100% !important;
-}*/
-
-/* pop over */
-/*.popover-content .btn,
-.popover-content select {
-  margin-bottom: 4px;
-}
-
-.popover-content .row .btn,
-.popover-content .btn:last-child,
-.popover-content select:last-child {
-  margin-bottom: 0;
-}
-
-.popover-content .btn:hover {
-  background-image: none;
-}*/
-
-
-
-/* Control Bar
-======================================*/
-/*.drager {
-  position: absolute;
-  z-index:99999;
-  width: auto;
-}
-
-#au-container {
+.au-form_btn-addRecord {
   position: relative;
-  width: auto;
-
-  opacity: .7;
-  -webkit-transition: -webkit-transform .2s ease-in-out;
-  -moz-transition: -moz-transform .2s ease-in-out;
-  -o-transition: -o-transform .2s ease-in-out;
-  transition: transform .2s ease-in-out;
+  padding-left: 30px;
+  background: #0a0;
+  border-color: #0a0;
 }
 
-.scale-down {
-  -webkit-transform: scale(0.5);
-  -moz-transform: scale(0.5);
-  -o-transform: scale(0.5);
-  transform: scale(0.5);
-}
-
-.rotate-90 {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
-.rotate90 {
-  margin: 15px;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-.control {
-  padding: 0px;
-  margin-top: 10px;
-  width: 100%;
-}
-
-#trash {
+.au-form_btn-addRecord:after,
+.au-form_btn-addRecord:before {
+  content: '';
   position: absolute;
-  left:50%;
-  top:50%;
-  opacity: 0.8;
-  width: 256px !important;
+  background: white;
 }
 
-.empty-record{
-  height:30px;
-  width:30px;
-  z-index:9999;
-  display:inline;
-}
-*/
-
-  /*background: rgba(0,0,0,.7);*/
-  /*padding: 0 10px 0 10px;*/
-
-/*.image-mark{
-    -webkit-transition: all 0.50s ease-in-out;
-    -moz-transition: all 0.50s ease-in-out;
-    -ms-transition: all 0.50s ease-in-out;
-    -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #4195fc;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-}
-*/
-/*.image-drag-enter{
-    -webkit-transition: all 0.50s ease-in-out;
-    -moz-transition: all 0.50s ease-in-out;
-    -ms-transition: all 0.50s ease-in-out;
-    -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #75FF69;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-}
-*/
-/*.image-drag-leave{
-    -webkit-transition: all 0.50s ease-in-out;
-    -moz-transition: all 0.50s ease-in-out;
-    -ms-transition: all 0.50s ease-in-out;
-    -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #FF2929;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-}*/
-
-/*.image-drag-drop{
-    -webkit-transition: all 0.50s ease-in-out;
-    -moz-transition: all 0.50s ease-in-out;
-    -ms-transition: all 0.50s ease-in-out;
-    -o-transition: all 0.50s ease-in-out;
-    border: 1px dashed #FF0000;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    border-radius: 1px;
-}*/
-
-/*.btn-block.current{
-  background: #000;
-  color:#CCC
+.au-form_btn-addRecord:before {
+  top: 9px;
+  left: 10px;
+  width: 10px;
+  height: 2px;
 }
 
-.btn {
-  width: auto;
+.au-form_btn-addRecord:after {
+  top: 5px;
+  left: 14px;
+  width: 2px;
+  height: 10px;
 }
 
-.editable-click, a.editable-click, a.editable-click:hover {
-  outline: 1px dashed #08C;
-  border: 0;
-}*/
+.au-add-record-float {
+  float: left;
+  background: none;
+  padding: 0;
+}
+
+.au-add-record-inline {
+  display: inline-block;
+  background: none;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.au-add-record-inline .au-form_btn-addRecord,
+.au-add-record-float .au-form_btn-addRecord {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.au-add-record-inline .au-form_btn-addRecord:before,
+.au-add-record-float .au-form_btn-addRecord:before {
+  left: 7px;
+}
+
+.au-add-record-inline .au-form_btn-addRecord:after,
+.au-add-record-float .au-form_btn-addRecord:after {
+  left: 11px;
+}
