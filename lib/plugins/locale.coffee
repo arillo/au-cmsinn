@@ -59,10 +59,16 @@ Locale = ->
   @ui = LocaleUI
   @contentType = 'locale'
   @defaultLocale = 'en_US'
+
+  # default languages
   @allLanguages = [
     {
       locale: 'en_US'
       title: 'en_US'
+    }
+    {
+      locale: 'de_DE'
+      title: 'de_DE'
     }
   ]
   return

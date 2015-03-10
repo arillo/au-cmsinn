@@ -119,3 +119,11 @@ if Meteor.isClient
     contentDep.depend()
     items = if items == undefined then [] else items
     CmsInnRecord.query { _id: $in: items }, limit, parent
+
+    UI.registerHelper 'sortedIndex', (items, parent, limit) ->
+      contentDep.depend()
+      items = if items == undefined then [] else items
+      items = CmsInnRecord.query { _id: $in: items }, limit, parent
+      items.map (item, index) ->
+        item._index = index + 1
+        item
