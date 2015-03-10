@@ -34,7 +34,7 @@ Package.on_use(function (api, where) {
         'jag:pince',
         'mrt:allow-env'
     ], both);
-    
+
     api.use([
         'jquery@1.0.0',
         'mrt:jquery-ui@1.9.2',
@@ -82,7 +82,9 @@ Package.on_use(function (api, where) {
     // record plugin
     api.addFiles([
         'client/plugins/cms_record/cms_record.html',
-        'client/plugins/cms_record/cms_record.coffee'
+        'client/plugins/cms_record/cms_record.coffee',
+        'client/plugins/cms_record/cms_record_float.html',
+        'client/plugins/cms_record/cms_record_inline.html'
     ], client);
 
     // rolesmanager plugin
