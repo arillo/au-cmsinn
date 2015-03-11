@@ -97,11 +97,19 @@ Locale::enable = ->
 Locale::config = (options) ->
   PluginBase::config.call this, gPluginName
 
+  # overwrite default locales if defined in settings
   if options and _.isArray(options.locales) and not _.isEmpty(options.locales)
     @allLanguages = []
 
     _.each options.locales, (locale) =>
       @allLanguages.push(locale) if _.isEmpty(_.where(@allLanguages, locale))
+
+  # set default locale, falling back to first locale if no default is defined in settings
+  if options.defaultLocale?
+    localeExists = !!_.find(@allLanguages, (language)-> language.locale is options.defaultLocale)
+    @defaultLocale = options.defaultLocale if localeExists
+  else
+    @defaultLocale = _.first(@allLanguages).locale if not _.isEmpty(@allLanguages)
 
   return
 

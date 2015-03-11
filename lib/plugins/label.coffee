@@ -174,6 +174,7 @@ LabelPlugin::upsertRecordField = (id, field, value, language) ->
   return
 
 LabelPlugin::getLanguage = ->
+  contentDep.depend()
   @language
 
 LabelPlugin::setLanguage = (lng) ->

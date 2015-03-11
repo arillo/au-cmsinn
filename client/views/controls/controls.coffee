@@ -34,8 +34,11 @@ Template.cmsinn_controls.events
     @currentPlugin = false
     helpers.clearControls()
     return
-Template.cmsinn_controls.helpers currentLocale: ->
-  CmsInn.plugins.label.getLanguage()
+
+Template.cmsinn_controls.helpers 
+
+  currentLocale: ->
+    CmsInn.plugins.label.getLanguage()
 
 Template.cmsinn_controls.destroyed = ->
   # 69
